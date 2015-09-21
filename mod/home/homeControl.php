@@ -54,6 +54,8 @@ class homeControl extends Control {
      */
     public function itStarts($uri = array()) {
 
+        $this->authOrbit();
+
         $this->view()->loadTemplate('home');
 
         if (count($uri) == 0)
@@ -151,6 +153,13 @@ class homeControl extends Control {
             $this->getPost('db')
         );
         $this->commitReplace('Created!', '#alert');
+    }
+
+    public function authOrbit() {
+
+        $orbit = new Orbit();
+        
+
     }
 
 }

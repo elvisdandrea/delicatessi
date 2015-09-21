@@ -58,6 +58,7 @@ class Session {
         if (!empty($session)) {
             eval('$value = ""; !isset($_SESSION' . $session . ') || $value = $_SESSION' . $session . ';');
         }
+
         return $value;
     }
 

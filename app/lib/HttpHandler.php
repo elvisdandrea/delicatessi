@@ -18,6 +18,13 @@ class HttpHandler {
     private $url = '';
 
     /**
+     * The Request URI
+     *
+     * @var string
+     */
+    private $uri = '';
+
+    /**
      * The Request Method
      *
      * ( GET | POST | PUT | DELETE | UPDATE | PATCH )
@@ -130,6 +137,16 @@ class HttpHandler {
     }
 
     /**
+     * Defines the Request URI
+     *
+     * @param $uri
+     */
+    public function setURI($uri) {
+
+        $this->uri = $uri;
+    }
+
+    /**
      * Stores all errors that may happen
      * along the process
      *
@@ -185,7 +202,7 @@ class HttpHandler {
      */
     public function execute() {
 
-        $url = $this->url;
+        $url = $this->url . $this->uri;
 
         if ($this->method == 'GET')
             $url .= '?' . http_build_query($this->params);
