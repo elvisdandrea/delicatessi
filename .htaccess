@@ -1,0 +1,9 @@
+
+RewriteEngine on
+RewriteCond %{REQUEST_FILENAME} -f [OR]
+RewriteCond %{REQUEST_FILENAME} -d
+RewriteRule . - [L]
+RewriteRule ^.*$ app.php [L]
+
+RewriteCond %{REQUEST_URI} \.(php|tpl)$ [NC]
+RewriteRule ^.*$ app.php [L]

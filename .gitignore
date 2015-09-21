@@ -1,0 +1,4 @@
+templates_c
+.idea
+app/ifc/cache
+app/ifc/data/*
