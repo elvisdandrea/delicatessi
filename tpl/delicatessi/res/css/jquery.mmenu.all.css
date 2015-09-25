@@ -148,7 +148,7 @@ html.mm-blocking #mm-blocker {
       text-overflow: ellipsis;
       white-space: nowrap;
       overflow: hidden;
-      color: #fff;
+      color: #E9C486;
       line-height: 20px;
       display: block;
       padding: 10px 10px 10px 15px;
@@ -265,7 +265,7 @@ html.mm-opened .mm-page {
   }
 
 .mm-ismenu {
-	background: #57C5A0;
+	background: #5D5D5D;
 }
 
 .mm-menu {

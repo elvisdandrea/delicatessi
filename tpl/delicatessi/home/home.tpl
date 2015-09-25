@@ -10,11 +10,10 @@
         <link href="{$smarty.const.T_CSSURL}/slider.css" rel="stylesheet" type="text/css" media="all" />
     </head>
     <body>
-        <!-- start header -->
-        {include "tpl/delicatessi/home/header.tpl"}
-
+        {$page_header}
+        <div id="content">
             {$page_content}
-
+        </div>
         {include "tpl/delicatessi/home/footer.tpl"}
     </body>
     <script src="{$smarty.const.T_JSURL}/jquery.min.js" type="text/javascript"></script>

@@ -27,12 +27,11 @@
     <div class="header_btm">
         <div class="menu">
             <ul>
-                <li class="active"><a href="index.html">Home</a></li>
-                <li><a href="products.html">products</a></li>
-                <li><a href="about.html">about</a></li>
-                <li><a href="index.html">pages</a></li>
-                <li><a href="blog.html">blog</a></li>
-                <li><a href="contact.html">Contact</a></li>
+                <li class="active"><a href="{$smarty.const.BASEDIR}home" changeurl>Home</a></li>
+                {foreach from=$categories item="row"}
+                    <li><a href="{$smarty.const.BASEDIR}products?category_name={$row['category_name']}" changeurl>{$row['category_name']}</a></li>
+                {/foreach}
+                <li><a href="{$smarty.const.BASEDIR}contact" changeurl>Contato</a></li>
                 <div class="clear"></div>
             </ul>
         </div>
@@ -41,12 +40,11 @@
         </div>
         <nav id="menu-left">
             <ul>
-                <li><a href="index.html">Home</a></li>
-                <li><a href="products.html">products</a></li>
-                <li><a href="about.html">about</a></li>
-                <li><a href="index.html">pages</a></li>
-                <li><a href="blog.html">blog</a></li>
-                <li><a href="contact.html">Contact</a></li>
+                <li><a href="{$smarty.const.BASEDIR}home">Home</a></li>
+                {foreach from=$categories item="row"}
+                    <li><a href="{$smarty.const.BASEDIR}products?category_name={$row['category_name']}" changeurl>{$row['category_name']}</a></li>
+                {/foreach}
+                <li><a href="{$smarty.const.BASEDIR}contact" changeurl>Contato</a></li>
                 <div class="clear"></div>
             </ul>
         </nav>

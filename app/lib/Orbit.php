@@ -1,16 +1,45 @@
 <?php
 
-
+/**
+ * Class Orbit
+ *
+ * Client for Orbit RESTful API
+ */
 class Orbit {
 
+    /**
+     * Authentication Id
+     *
+     * @var
+     */
     private $id;
 
+    /**
+     * Authentication Secret Word
+     *
+     * @var
+     */
     private $secret;
 
+    /**
+     * Authentication
+     *
+     * @var
+     */
     private $authentication;
 
+    /**
+     * API URL
+     *
+     * @var string
+     */
     private $url;
 
+    /**
+     * Handler for HTTP Client
+     *
+     * @var HttpHandler
+     */
     private $request;
 
     public function __construct() {
@@ -21,6 +50,10 @@ class Orbit {
         $this->LoadApi();
     }
 
+    /**
+     * Loads the API Authentication and
+     * check if token is not expired
+     */
     private function LoadApi() {
 
         $this->authentication = Session::get('authentication');
@@ -34,6 +67,9 @@ class Orbit {
 
     }
 
+    /**
+     * Performs Login in the Orbit API
+     */
     private function apiLogin() {
 
         $this->loadAthentication();
@@ -53,6 +89,10 @@ class Orbit {
 
     }
 
+    /**
+     * Loads the API Authentication File with
+     * encrypted code
+     */
     private function loadAthentication() {
 
         $authFile = IFCDIR . '/data/' . md5(ORBIT_ID);
@@ -70,6 +110,9 @@ class Orbit {
 
     }
 
+    /**
+     * Checks if Token is alive on server
+     */
     private function checkTokenAlive() {
         //TODO: method to check if token is alive
     }
@@ -82,6 +125,11 @@ class Orbit {
         return false;
     }
 
+    /**
+     * Returns the Expiration Date of the Token
+     *
+     * @return bool
+     */
     public function getTokenExpire() {
 
         if (isset($this->authentication['expires']))
@@ -90,6 +138,11 @@ class Orbit {
         return false;
     }
 
+    /**
+     * Returns the User Authentication Id
+     *
+     * @return bool
+     */
     public function getUid() {
 
         if (isset($this->authentication['uid']))
@@ -98,6 +151,11 @@ class Orbit {
         return false;
     }
 
+    /**
+     * Returns the Company ID
+     *
+     * @return bool
+     */
     public function getCompanyId() {
 
         if (isset($this->authentication['company_id']))
@@ -107,18 +165,30 @@ class Orbit {
     }
 
     /**
+     * Returns the URL of the last request performed to the API
      *
+     * @return string
+     */
+    public function getURL() {
+
+        return $this->request->getURL();
+    }
+
+
+    /**
+     * Executes a method on Orbit API and get the response
      *
-     * @param   int         $page
-     * @param   int         $rp
-     * @param   bool|array  $filters
-     * @param   bool|array  $order
+     * @param   string      $method     - The API method
+     * @param   int         $page       - Number of Current Result Page (for paginated methods)
+     * @param   int         $rp         - Number of Results per Page
+     * @param   bool|array  $filters    - Filters of the method
+     * @param   bool|array  $order      - Result order
      * @return  mixed
      */
-    public function getProducts($page = 1, $rp = 10, $filters = false, $order = false) {
+    public function get($method, $page = 1, $rp = 10, $filters = false, $order = false) {
 
         $this->request->clearParams();
-        $this->request->setURI('product');
+        $this->request->setURI($method);
         $this->request->addParam('token', $this->getToken());
 
         foreach (array('filters', 'order') as $operation) {

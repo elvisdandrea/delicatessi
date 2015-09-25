@@ -59,9 +59,10 @@ class homeControl extends Control {
         if (count($uri) == 0)
             $uri = array(MAIN);
 
+        $this->view()->setVariable('page_header', $this->getHeader());
+
         $content = Core::getMethodContent($uri);
         $this->view()->setVariable('page_content', $content);
-
 
         $this->view()->appendJs('home');
 
@@ -69,6 +70,17 @@ class homeControl extends Control {
         echo $this->view()->injectJSFiles();
         echo Core::getController()->view()->injectJSFiles();
         $this->terminate();
+    }
+
+    private function getHeader() {
+
+        $products = Services::get('products');
+        $this->newView('header');
+        $this->view('header')->loadTemplate('header');
+        $categories = $products->getCategories();
+        $this->view('header')->setVariable('categories', $categories['items']);
+
+        return $this->view('header')->render();
     }
 
     /**
@@ -79,7 +91,7 @@ class homeControl extends Control {
      */
     public function homePage() {
 
-        $products = new productsControl();
+        $products = Services::get('products');
 
         $blocks = array(
             'slider'        => $products->getSlider(),
@@ -91,25 +103,9 @@ class homeControl extends Control {
         foreach ($blocks as $var => $block)
             $products->view()->setVariable($var, $block);
 
-        $products->commitReplace($products->view()->render(), 'body', true);
-    }
 
-    /**
-     * RESTful GET call example
-     */
-    public function getHome() {
-
-        #debug($this->view()->getModuleName());     // Example of a code debug
-
-        #throw new ExceptionHandler('teste', 400);  // Example of Exception Handling
-        #$this->view('')->lol();                    // Example of Fatal Error Handling
-
-        $result = array(
-            'execution'     => 'Hooray, green test!',
-            'working_id'    => $this->getId()
-        );
-
-        return $result;
+        $products->view()->appendJs('home');
+        $products->commitReplace($products->view()->render(), '#content', true);
     }
 
     /**
@@ -120,34 +116,8 @@ class homeControl extends Control {
     public function notFound($url) {
 
         $this->view()->setVariable('url', $url);
-        $this->commitReplace($this->view()->get404(), 'body');
+        $this->commitReplace($this->view()->get404(), '#content');
     }
 
-    /**
-     * The view to create a database connection file
-     */
-    public function createDb() {
-
-        $this->view()->loadTemplate('createdb');
-        $this->commitReplace($this->view()->render(), '#main');
-    }
-
-    /**
-     * The action to save a database connection file
-     */
-    public function saveDbFile() {
-
-        $this->validatePost('conname', 'host', 'user', 'pass', 'db') ||
-            $this->commitReplace('Please fill all information.', '#alert', false);
-
-        $this->model()->generateConnectionFile(
-            $this->getPost('conname'),
-            $this->getPost('host'),
-            $this->getPost('user'),
-            $this->getPost('pass'),
-            $this->getPost('db')
-        );
-        $this->commitReplace('Created!', '#alert');
-    }
 
 }

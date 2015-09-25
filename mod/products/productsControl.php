@@ -44,26 +44,76 @@ class productsControl extends Control {
 
     public function getRecentProducts() {
 
-        $products = $this->orbitClient->getProducts(1, 3, false, array('sdate:desc'));
+        $products = $this->orbitClient->get('product', 1, 3, false, array('sdate:desc'));
         $this->view()->loadTemplate('productresult');
         $this->view()->setVariable('products', $products['items']);
         $this->view()->setVariable('title', 'Novos Produtos');
+        $this->view()->setVariable('see_all', true);
+
         return $this->view()->render();
     }
 
     public function getBestSellers() {
 
-        $products = $this->orbitClient->getProducts(1, 3, false, array('sdate:desc'));
+        $products = $this->orbitClient->get('product', 1, 3, false, array('sdate:desc'));
         $this->view()->loadTemplate('productresult');
         $this->view()->setVariable('products', $products['items']);
         $this->view()->setVariable('title', 'Mais Vendidos');
+        $this->view()->setVariable('see_all', true);
+
         return $this->view()->render();
     }
 
     public function getSlider() {
 
+        $products = $this->orbitClient->get('product', 1, 3, array('featured' => 1), false);
         $this->view()->loadTemplate('slider');
+        $this->view()->setVariable('featured', $products['items']);
         return $this->view()->render();
+    }
+
+    public function getCategories() {
+        return $this->orbitClient->get('category', 1, 3, false, false);
+
+    }
+
+    public function productsPage() {
+
+        $page = $this->getQueryString('page');
+        $page || $page = 1;
+        $rp   = $this->getQueryString('rp');
+        $rp   || $rp   = 6;
+
+        $filters = array();
+        $query_filters = array(
+            'category_name'
+        );
+
+        foreach($query_filters as $filterField) {
+            $filtered = $this->getQueryString($filterField);
+            if ($filtered) $filters[$filterField] = $filtered;
+        }
+
+        $products = $this->orbitClient->get('product', $page, $rp, $filters, array('sdate:desc'));
+
+        $this->view()->loadTemplate('productresult');
+        $this->view()->setVariable('products', $products['items']);
+
+
+        $title = $products['total']['total'] . ' Produtos';
+        if (intval($products['total']['total']) == 0) $title = 'Nenhum produto encontrado para esta pesquisa';
+        $this->view()->setVariable('title', $title);
+
+        $this->newView('content');
+        $this->view('content')->loadTemplate('content');
+        $this->view('content')->setVariable('content', $this->view()->render());
+        $title = $this->getQueryString('category_name');
+        $title || $title = 'Nossos Produtos';
+        $this->view('content')->setVariable('title', $title);
+
+        $this->commitReplace($this->view('content')->render(), '#content');
+        $this->scrollToElement('#content');
+
     }
 
 
