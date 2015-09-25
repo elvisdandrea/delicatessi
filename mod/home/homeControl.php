@@ -54,8 +54,6 @@ class homeControl extends Control {
      */
     public function itStarts($uri = array()) {
 
-        $this->authOrbit();
-
         $this->view()->loadTemplate('home');
 
         if (count($uri) == 0)
@@ -63,20 +61,6 @@ class homeControl extends Control {
 
         $content = Core::getMethodContent($uri);
         $this->view()->setVariable('page_content', $content);
-
-        /**
-         * A few usage examples
-         */
-        #$this->view->appendJs('example');  // Example on appending module javascript files
-        #$this->model()->queryExample(1);   // Example of a query (just remember that the default connection has no data yet)
-
-        #$this->newModel('example');                // Example of how to create a new model connected in a different database
-        #$this->model('example')->queryExample();   // This time, the query on queryExample will be executed on the connection of the 'example' file
-
-        #debug($this->view()->getModuleName());     // Example of a code debug
-
-        #throw new ExceptionHandler('teste', 400);  // Example of Exception Handling
-        #$this->view('')->lol();                    // Example of Fatal Error Handling
 
 
         $this->view()->appendJs('home');
@@ -95,8 +79,19 @@ class homeControl extends Control {
      */
     public function homePage() {
 
-        $this->view()->loadTemplate('overview');
-        $this->commitReplace($this->view()->render(), '#main', true);
+        $products = new productsControl();
+
+        $blocks = array(
+            'slider'        => $products->getSlider(),
+            'recent'        => $products->getRecentProducts(),
+            'bestsellers'   => $products->getBestSellers()
+        );
+
+        $products->view()->loadTemplate('home');
+        foreach ($blocks as $var => $block)
+            $products->view()->setVariable($var, $block);
+
+        $products->commitReplace($products->view()->render(), 'body', true);
     }
 
     /**
@@ -153,13 +148,6 @@ class homeControl extends Control {
             $this->getPost('db')
         );
         $this->commitReplace('Created!', '#alert');
-    }
-
-    public function authOrbit() {
-
-        $orbit = new Orbit();
-        
-
     }
 
 }

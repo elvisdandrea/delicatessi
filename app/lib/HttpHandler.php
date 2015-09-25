@@ -182,6 +182,16 @@ class HttpHandler {
         return $this->content;
     }
 
+    public function getURL() {
+
+        $url = $this->url . $this->uri;
+
+        if ($this->method == 'GET')
+            $url .= '?' . http_build_query($this->params);
+
+        return $url;
+    }
+
     /**
      * True|False if an
      * error has occurred so far
@@ -202,12 +212,7 @@ class HttpHandler {
      */
     public function execute() {
 
-        $url = $this->url . $this->uri;
-
-        if ($this->method == 'GET')
-            $url .= '?' . http_build_query($this->params);
-
-        $ch = curl_init($url);
+        $ch = curl_init($this->getURL());
         curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
         curl_setopt($ch, CURLOPT_USERAGENT, 'Mozilla/5.0 (Windows; U; Windows NT 5.1; en-US; rv:1.8.1.13) Gecko/20080311 Firefox/2.0.0.13 Loximi sfFacebookPhoto PHP5 (cURL)');
         curl_setopt($ch, CURLOPT_FOLLOWLOCATION, true);

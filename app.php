@@ -70,6 +70,7 @@ define('TEMPLATE', 'delicatessi');              // The view template
 define('APPTITLE', ' - Semi-jóias e Acessórios Femininos'); // Define the static portion of page title here
 
 define('REQUIRE_LOGIN', '0');                   // If this framework should require a logged user
+define('ORBIT_ID', 'delicatessi');
 
 define('LNG', 'pt');                            // Site Language
 
