@@ -7,7 +7,7 @@
 <div class="grids_of_3">
     {foreach from=$products item="product"}
         <div class="grid1_of_3">
-            <a href="{$smarty.const.BASEDIR}products/{$product['id']}">
+            <a href="{$smarty.const.BASEDIR}products/{$product['id']}" changeurl>
                 <div class="thumb_img">
                     <img src="{$product['image']}" alt="{$product['product_name']}"/>
                 </div>

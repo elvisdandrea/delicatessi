@@ -40,11 +40,20 @@
         </div>
         <nav id="menu-left">
             <ul>
+                <li><form>
+                        <input type="text" value="">
+                        <input type="submit" value=" " />
+                    </form>
+                </li>
+                <div class="clear"></div>
                 <li><a href="{$smarty.const.BASEDIR}home">Home</a></li>
                 {foreach from=$categories item="row"}
                     <li><a href="{$smarty.const.BASEDIR}products?category_name={$row['category_name']}" changeurl>{$row['category_name']}</a></li>
                 {/foreach}
                 <li><a href="{$smarty.const.BASEDIR}contact" changeurl>Contato</a></li>
+                <li><a href="{$smarty.const.BASEDIR}profile" changeurl>Minha Conta</a></li>
+                <li><a href="{$smarty.const.BASEDIR}profile/new" changeurl>Criar Conta</a></li>
+
                 <div class="clear"></div>
             </ul>
         </nav>

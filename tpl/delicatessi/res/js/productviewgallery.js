@@ -218,7 +218,7 @@ var jQblvg  = jQuery.noConflict();
 
 (function($){
     $.fn.absoluteClick = function() {
-       var elnt = $(this);   
+       var elnt = $(this);
        $('body').click( function(pos) {
            a = parseInt(elnt.offset().left);
            x = parseInt(elnt.offset().left + elnt.width());

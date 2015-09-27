@@ -79,6 +79,11 @@ class productsControl extends Control {
 
     public function productsPage() {
 
+        if ($this->getId() > 0) {
+            $this->viewProduct();
+            return;
+        }
+
         $page = $this->getQueryString('page');
         $page || $page = 1;
         $rp   = $this->getQueryString('rp');
@@ -116,6 +121,43 @@ class productsControl extends Control {
 
     }
 
+    public function getGadget($filters, $curId = '0') {
 
+        $this->newView('gadget');
+        $this->view('gadget')->loadTemplate('gadget');
+
+        $products = $this->orbitClient->get('product', 1, 3, $filters, array('sdate:desc'));
+        $this->view('gadget')->setVariable('products', $products['items']);
+
+
+        $featured = $this->orbitClient->get('product', 1, 3, array('featured' => '1', 'id' => '!=' . $curId), array('sdate:desc'));
+        $this->view('gadget')->setVariable('featured', $featured['items']);
+
+        return $this->view('gadget')->render();
+    }
+
+    public function viewProduct() {
+
+        $result  = $this->orbitClient->get('product/' . $this->getId());
+        $product = $result['items'];
+
+        $this->view()->loadTemplate('detail');
+        $this->view()->setVariable('product', $product);
+
+
+        $filters = array(
+            'category_name' => $product['category_name'],
+            'id'            => '!=' . $product['id']
+        );
+
+        $this->view()->setVariable('gadget', $this->getGadget($filters, $product['id']));
+
+        $this->newView('content');
+        $this->view('content')->loadTemplate('content');
+        $this->view('content')->setVariable('title', $product['product_name']);
+        $this->view('content')->setVariable('content', $this->view()->render());
+        $this->commitReplace($this->view('content')->render(), '#content');
+        $this->scrollToElement('#content');
+    }
 
 }

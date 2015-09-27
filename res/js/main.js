@@ -45,7 +45,6 @@ Main.prototype = {
             var action    = $(this).attr('href');
             var changeUrl = $(this).attr('changeurl') != undefined;
             e.preventDefault();
-            $('#loading').show();
             Html.Get(action, function(r){
                 eval(r);
                 if (changeUrl) window.history.pushState(undefined, '', action);
