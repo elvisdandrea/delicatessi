@@ -189,6 +189,12 @@ Html.prototype = {
 
     },
 
+    InvalidForm: function(element) {
+        $(element).find('input[required]').each(function(){
+            if ($(this).val() == '') $(this).css('border', '1px solid #C77');
+        });
+    },
+
     /**
      * Runs an ajax POST
      *

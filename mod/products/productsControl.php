@@ -160,4 +160,39 @@ class productsControl extends Control {
         $this->scrollToElement('#content');
     }
 
+    public function addToCart() {
+
+        if (!UID::isLoggedIn()) {
+            $client = Services::get('client');
+            $client->register();
+            return;
+        }
+
+        $orbit   = new Orbit();
+        $request = $orbit->get('request/cart', 1, 1, array('client_id' => UID::get('id')));
+
+
+        if (!isset($cart['cart']) || $cart['cart'] == 0 ) {
+            $request = $orbit->post('request/addcart', array(
+                'client_id' => UID::get('id')
+            ));
+
+            if ($request['status'] != 200) {
+                //TODO: validar erro de criação de carrinho
+            }
+        }
+
+        $cart = $request['cart'];
+
+        $item = $orbit->post('request/additem', array(
+            'request_id'    => $cart['id'],
+            'product_id'    => $this->getQueryString('product_id')
+        ));
+
+        $cartPage = Services::get('cart');
+        $cartPage->updateCounter();
+        $cartPage->cartPage();
+
+    }
+
 }

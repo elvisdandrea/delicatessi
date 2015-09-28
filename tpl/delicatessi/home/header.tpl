@@ -6,9 +6,9 @@
             </div>
             <div class="log_reg">
                 <ul>
-                    <li><a href="login.html">Minha Conta</a> </li>
+                    <li><a href="{$smarty.const.BASEDIR}client" changeurl">Minha Conta</a> </li>
                     <span class="log"> | </span>
-                    <li><a href="register.html">Criar Conta</a> </li>
+                    <li><a href="{$smarty.const.BASEDIR}client/register" changeurl>Criar Conta</a> </li>
                     <div class="clear"></div>
                 </ul>
             </div>
@@ -51,16 +51,16 @@
                     <li><a href="{$smarty.const.BASEDIR}products?category_name={$row['category_name']}" changeurl>{$row['category_name']}</a></li>
                 {/foreach}
                 <li><a href="{$smarty.const.BASEDIR}contact" changeurl>Contato</a></li>
-                <li><a href="{$smarty.const.BASEDIR}profile" changeurl>Minha Conta</a></li>
-                <li><a href="{$smarty.const.BASEDIR}profile/new" changeurl>Criar Conta</a></li>
+                <li><a href="{$smarty.const.BASEDIR}client" changeurl>Minha Conta</a></li>
+                <li><a href="{$smarty.const.BASEDIR}client/register" changeurl>Criar Conta</a></li>
 
                 <div class="clear"></div>
             </ul>
         </nav>
         <div class="header_right">
             <ul>
-                <li><a href="#"><i  class="art"></i><span class="color1">30</span></a></li>
-                <li><a href="#"><i  class="cart"></i><span>0</span></a></li>
+                <li><a href="{$smarty.const.BASEDIR}client/favs" changeurl><i  class="art"></i><span class="color1">{intval($favs)}</span></a></li>
+                <li><a href="{$smarty.const.BASEDIR}client" changeurl><i  class="cart"></i><span id="cartitems">{intval($carts)}</span></a></li>
             </ul>
         </div>
         <div class="clear"></div>

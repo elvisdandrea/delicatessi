@@ -27,8 +27,9 @@
             <h5>{String::convertTextFormat($product['price'], 'currency')}</h5>
             <div class="available">
                 <div class="btn_form">
-                    <form>
+                    <form method="get" action="{$smarty.const.BASEDIR}products/addtocart">
                         <input type="submit" value="Eu Quero" title="" />
+                        <input type="hidden" name="product_id" value="{$product['id']}">
                     </form>
                 </div>
                 <span><a href="{$smarty.const.BASEDIR}products/addfavourite?id={$product['id']}">Adicionar aos favoritos</a></span>

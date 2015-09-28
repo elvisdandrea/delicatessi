@@ -65,6 +65,8 @@ class Orbit {
 
         if ($now > $expires) $this->apiLogin();
 
+        if (!$this->checkTokenAlive()) $this->apiLogin();
+
     }
 
     /**
@@ -114,7 +116,16 @@ class Orbit {
      * Checks if Token is alive on server
      */
     private function checkTokenAlive() {
-        //TODO: method to check if token is alive
+
+        $this->request->clearParams();
+        $this->request->setMethod('get');
+        $this->request->setURI('auth/tokenisalive');
+        $this->request->addParam('token', $this->getToken());
+
+        $this->request->execute();
+        $result = $this->request->getContent();
+
+        return $result['status'] == 200;
     }
 
     public function getToken() {
@@ -188,6 +199,7 @@ class Orbit {
     public function get($method, $page = 1, $rp = 10, $filters = false, $order = false) {
 
         $this->request->clearParams();
+        $this->request->setMethod('get');
         $this->request->setURI($method);
         $this->request->addParam('token', $this->getToken());
 
@@ -201,6 +213,18 @@ class Orbit {
 
         $this->request->addParam('page', $page);
         $this->request->addParam('rp',   $rp);
+        $this->request->execute();
+
+        $content = json_decode($this->request->getContent(), true);
+        return $content;
+    }
+
+    public function post($method, $data) {
+
+        $this->request->clearParams();
+        $this->request->setMethod('post');
+        $this->request->setURI($method . '?token=' . $this->getToken());
+        foreach ($data as $param => $value) $this->request->addParam($param, $value);
         $this->request->execute();
 
         $content = json_decode($this->request->getContent(), true);

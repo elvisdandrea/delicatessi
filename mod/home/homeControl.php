@@ -75,8 +75,20 @@ class homeControl extends Control {
     private function getHeader() {
 
         $products = Services::get('products');
+        $favs  = '0';
+        $carts = '0';
+        if (UID::isLoggedIn()) {
+            $orbit = new Orbit();
+            $favRequest  = $orbit->get('client/countfav', 1, 1, array('id' => UID::get('id')));
+            $favs        = $favRequest['fav'];
+            $cartRequest = $orbit->get('client/countcart', 1, 1, array('id' => UID::get('id')));
+            $carts       = $cartRequest['cart'];
+        }
+
         $this->newView('header');
         $this->view('header')->loadTemplate('header');
+        $this->view('header')->setVariable('favs',  $favs);
+        $this->view('header')->setVariable('carts', $carts);
         $categories = $products->getCategories();
         $this->view('header')->setVariable('categories', $categories['items']);
 

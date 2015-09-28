@@ -48,6 +48,10 @@ body {
 	float:left;
 	margin: 14px 0;
 }
+
+.logo img {
+    height: 80px;
+}
 /********** Login & registration *************/
 .log_reg{
 	border-right: 1px solid rgb(60, 60, 60);
@@ -131,8 +135,9 @@ h4.style{
 	-o-border-radius: 2px;
 }
 .btn form input[type="button"]:hover,.registration_form input[type="submit"]:hover{
-	background: #57C5A0;
-	border: 1px solid #57c5a0;
+	background: #E4D9AB;
+	border: 1px solid #E4D9AB;
+    color: #473D2C !important;
 }
 /* start registration */
 .registration{
@@ -390,7 +395,7 @@ h4.style{
 	width: 28px;
 	height: 28px;
 	position: absolute;
-	top: 75px;
+	top: 135px;
 	left: 6.33333%;
 	background: url(../img/nav-icon.png) no-repeat;
 }
@@ -1795,8 +1800,8 @@ span.color7{
 	display: block;
 }
 .tabs input:hover + label {
-	background: #3DC4B7;
-	color:#ffffff;
+	background: #242424;
+	color:#E9C486;
 	font-weight: normal;
 }
 .tabs label:first-of-type {
@@ -1818,7 +1823,7 @@ span.color7{
 }
 .tabs input:checked + label {
 	cursor:pointer;
-	color: #3DC4B6;
+	color: #6F4806;
     background: #fff;
 	z-index: 6;
 }
@@ -2399,3 +2404,83 @@ span.color7{
     cursor: pointer;
 }
 
+.row {
+    max-height: 100px;
+    padding: 5px;
+    background-color: #ffffff;
+    margin: 5px;
+    position: relative;
+}
+
+.row .item_detail {
+    display: inline-block;
+    position: relative;
+    vertical-align: top;
+    margin-left: 0.7em;
+}
+
+.item_detail label {
+    display: inline-block;
+}
+
+.item_detail label.title {
+    color: #6F4806;
+}
+
+.item_detail span.text {
+    display: block;
+}
+
+ .row_price {
+    background: #242424 none repeat scroll 0% 0%;
+    color: #E9C486;
+    font-size: 0.8725em;
+    padding: 25px 12px;
+    top: -5px;
+    position: absolute;
+    right: 10px;
+    width: 80px;
+     text-align: right;
+}
+
+
+.row .image_thumb {
+    height: 100px;
+    display: inline-block;
+    max-width: 100px;
+    vertical-align: middle;
+}
+
+.image_thumb img {
+    max-height: 100%;
+    max-width: 100%;
+    display: inline-block;
+    top: 50%;
+    position: relative;
+    transform: translateY(-50%);
+    -webkit-transform: translateY(-50%);
+    -moz-transform: translateY(-50%);
+}
+
+.link-remove {
+    font-size: 12px;
+    color: #999;
+    margin-left: 20px;
+}
+
+.purchase {
+    width: 90%;
+    margin-left: 3.3333%;
+    background: #FFF none repeat scroll 0% 0%;
+    padding: 2%;
+    margin-bottom: 50px;
+}
+
+.purchase h3 {
+    font-size: 1.2em;
+    color: #6F4806;
+    text-transform: uppercase;
+    text-shadow: 0px 1px 0px #FFF;
+    border-bottom: 1px solid #E9E9E9;
+    padding-bottom: 10px;
+}

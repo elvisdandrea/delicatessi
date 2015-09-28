@@ -174,6 +174,13 @@ class Html {
         );
     }
 
+    public static function InvalidForm($element) {
+        return (!Core::isAjax() ?
+            '<script>Html.InvalidForm("' . $element . '");</script>' :
+            'Html.InvalidForm("' . $element . '");'
+        );
+    }
+
     /**
      * Still to be implemented
      *

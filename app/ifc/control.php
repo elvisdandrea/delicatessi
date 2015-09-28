@@ -361,6 +361,11 @@ class Control {
         $stay || $this->terminate();
     }
 
+    protected function commitFormInvalid($element, $stay = true) {
+        echo Html::InvalidForm($element);
+        $stay || $this->terminate();
+    }
+
     /**
      * Preventing Memory Leaks
      */

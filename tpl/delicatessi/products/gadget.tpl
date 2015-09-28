@@ -7,7 +7,7 @@
                     <img src="{$product['image']}" alt="{$product['product_name']}"/>
                 </div>
                 <div class="left_text">
-                    <p><a href="{$smarty.const.BASEDIR}products/{$product['id']}">{$product['product_name']}</a></p>
+                    <p><a href="{$smarty.const.BASEDIR}products/{$product['id']}" changeurl>{$product['product_name']}</a></p>
                     {*<span class="line"></span>*}
                     <span>{String::convertTextFormat($product['price'], 'currency')}</span>
                 </div>
@@ -33,7 +33,7 @@
                 <img src="{$row['image']}" alt=""/>
             </div>
             <div class="left_text">
-                <p><a href="{$smarty.const.BASEDIR}products/{$row['id']}">{$row['product_name']}</a></p>
+                <p><a href="{$smarty.const.BASEDIR}products/{$row['id']}" changeurl>{$row['product_name']}</a></p>
                 {*<span class="line"></span>*}
                 <span>{String::convertTextFormat($row['price'], 'currency')}</span>
             </div>
