@@ -111,6 +111,11 @@ class HttpHandler {
         $this->params[$param] = $value;
     }
 
+    public function setParams(array $params) {
+
+        $this->params = $params;
+    }
+
     /**
      * Adds a Header to the Request
      *

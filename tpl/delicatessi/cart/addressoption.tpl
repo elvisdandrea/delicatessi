@@ -1,0 +1,1 @@
+<option value="{$address['id']}">{$address['street_addr']}, {$address['street_number']} {$address['street_additional']}, {$address['hood']} - {$address['city']}/{$address['state']} ({$address['zip_code']})</option>
