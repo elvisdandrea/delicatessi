@@ -26,6 +26,7 @@
 
         <div class="purchase">
             <h3>Finalizar Compra</h3>
+            <div id="purchase_msg"></div>
             <div class="registration_form">
                 <label>Valor do Pedido:</label><label>{$orderPrice}</label>
                 <label>Valor do Frete:</label><label id="shippingprice">(escolha um endereço para entrega)</label>

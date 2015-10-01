@@ -110,6 +110,51 @@ class cartControl extends Control {
 
     }
 
+    public function purchase() {
+
+        $shipping   = UID::get('shipping_options', $this->getPost('shipping_option'));
+        $address_id = $this->getPost('address_id');
+
+        if (!$shipping) {
+            //TODO: Retornar mensagem shipping error
+        }
+
+        $shipping_fields = array(
+            'Codigo'            => 'shipping_code',
+            'Valor'             => 'shipping_value',
+            'PrazoEntrega'      => 'delivery_time',
+            'ValorMaoPropria'   => 'hand_value',
+            'ValorAvisoRecebimento' => 'notify_value',
+            'ValorValorDeclarado'   => 'recover_value',
+            'EntregaDomiciliar'     => 'home_delivery',
+            'EntregaSabado'         => 'weekend_delivery'
+        );
+
+        $orbit      = new Orbit();
+        $request    = $orbit->get('request/cart', 1, 1, array('client_id' => UID::get('id')));
+
+        if (!isset($request['cart']) || $request['cart'] === 0) {
+            //TODO: retornar erro no carrinho
+        }
+
+        $cart       = $request['cart'];
+
+        foreach ($shipping_fields as $key => $field) {
+            $purchase[$field] = $shipping[$key];
+        }
+
+        $purchase   = $orbit->post('request/purchase', array(
+            'client_id'     => UID::get('id'),
+            'request_id'    => $cart['id'],
+            'address_id'    => $address_id
+        ));
+
+        debug($purchase);
+
+        //TODO: direcionar para pagSeguro
+
+    }
+
     public function remove() {
 
         $orbit  = new Orbit();

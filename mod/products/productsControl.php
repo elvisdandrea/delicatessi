@@ -171,8 +171,7 @@ class productsControl extends Control {
         $orbit   = new Orbit();
         $request = $orbit->get('request/cart', 1, 1, array('client_id' => UID::get('id')));
 
-
-        if (!isset($cart['cart']) || $cart['cart'] == 0 ) {
+        if (!isset($request['cart']) || $request['cart'] == 0 ) {
             $request = $orbit->post('request/addcart', array(
                 'client_id' => UID::get('id')
             ));
