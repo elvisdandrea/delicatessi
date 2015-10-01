@@ -140,14 +140,16 @@ class cartControl extends Control {
         $cart       = $request['cart'];
 
         foreach ($shipping_fields as $key => $field) {
-            $purchase[$field] = $shipping[$key];
+            $purchaseData[$field] = $shipping[$key];
         }
 
-        $purchase   = $orbit->post('request/purchase', array(
+        $purchaseData = array_merge($purchaseData, array(
             'client_id'     => UID::get('id'),
             'request_id'    => $cart['id'],
             'address_id'    => $address_id
         ));
+
+        $purchase   = $orbit->post('request/purchase', $purchaseData);
 
         debug($purchase);
 
