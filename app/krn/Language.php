@@ -49,7 +49,7 @@ class Language {
      * @param   $arguments      - Not used
      * @return  string
      */
-    public function __callStatic($function, $arguments) {
+    public static function __callStatic($function, $arguments) {
         $rep = array();
         if(isset($arguments) && count($arguments) > 0)
             foreach ($arguments as $key => $arg)
