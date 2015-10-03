@@ -179,7 +179,11 @@ class cartControl extends Control {
             $pagSeguro->addItem($item['id'], $item['product_name'], $item['price'], '1', $item['weight']);
         }
 
-        $pagSeguro->addSender('Bruna Conter', 'atendimento@delicatessi.com.br','51', '31150338');
+        $config = $orbit->get('config');
+        $config = current($config['config']);
+
+
+        $pagSeguro->addSender($config['sender_name'], $config['sender_email'],$config['sender_area_code'], $config['sender_phone']);
 
         $pagSeguro->addShipping(
             PagSeguro::getShippingType($purchaseData['shipping_code']),
@@ -194,9 +198,9 @@ class cartControl extends Control {
         );
 
         $pagSeguro->setReference($hash);
-        $pagSeguro->setRedirectURL('http://localhost/delicatessi/cart/confirmed?order=' . $hash);
-        $pagSeguro->setAccountEmail('brunaconter@hotmail.com');
-        $pagSeguro->setToken('807795BB8CBE4C2F98B4ED804C352EA0');
+        $pagSeguro->setRedirectURL(MAINURL . '/cart/confirmed?order=' . $hash);
+        $pagSeguro->setAccountEmail($config['payment_account']);
+        $pagSeguro->setToken($config['token']);
 
 
         UID::set('purchase_data', $hash, $purchaseData);
