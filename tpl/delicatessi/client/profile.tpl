@@ -43,7 +43,7 @@
                                                 <input type="text" name="cep" placeholder="CEP:"/>
                                             </div>
                                             <div class="col-6">
-                                                <input class="" type="submit" value="Buscar"/>
+                                                <input class="form-input" type="submit" value="Buscar"/>
                                             </div>
                                         </div>
                                     </div>

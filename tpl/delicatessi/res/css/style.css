@@ -2551,3 +2551,7 @@ span.color7{
 .form-grid .col-6  input[type="submit"] {
     margin: 0 !important;
 }
+
+.form-input {
+    margin: 0 !important;
+}
