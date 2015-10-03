@@ -158,6 +158,9 @@ class PagSeguro {
             $address->addChild($addrField, $value);
         }
 
+        $this->xml->addChild('redirectURL', $this->redirectUrl);
+        $this->xml->addChild('notificationURL', $this->notificationURL);
+
         return $this->xml->asXML();
 
     }

@@ -14,8 +14,17 @@ class clientControl extends Control {
             return;
         }
 
-        $cart = Services::get('cart');
-        $cart->cartPage();
+        $orbit  = new Orbit();
+        $address = $orbit->get('client/addresslist/' . UID::get('id'));
+
+        $phones  = $orbit->get('client/phones/' . UID::get('id'));
+
+        $this->view()->setVariable('profile', UID::get());
+        $this->view()->loadTemplate('profile');
+        $this->view()->setVariable('addressList', $address['address']);
+        $this->view()->setVariable('phoneList', $phones['phones']);
+
+        $this->commitReplace($this->view()->render(), '#content');
     }
 
     public function loginPage() {
@@ -35,6 +44,17 @@ class clientControl extends Control {
 
         if ($client['status'] == 200) {
             UID::set($client['uid']);
+
+
+            $orbit = new Orbit();
+            $favRequest  = $orbit->get('client/countfav', 1, 1, array('id' => UID::get('id')));
+            $favs        = $favRequest['fav'];
+            $cartRequest = $orbit->get('client/countcart', 1, 1, array('id' => UID::get('id')));
+            $carts       = $cartRequest['cart'];
+
+            $this->commitReplace($carts, '#cartitems');
+            $this->commitReplace($favs,  '#favitems');
+
             $product_id = $this->getQueryString('product_id');
 
             if ($product_id) {
@@ -49,7 +69,8 @@ class clientControl extends Control {
             return;
         }
 
-        //TODO: message login invalid
+        $this->commitReplace('O e-mail e senha não foram encontrados', '#loginmsg');
+        $this->commitShow('#loginmsg');
     }
 
     public function register() {
@@ -95,6 +116,16 @@ class clientControl extends Control {
 
         $home = Services::get('home');
         $home->homePage();
+
+    }
+
+    public function removeAddr() {
+        $id = $this->getQueryString('id');
+
+        $orbit = new Orbit();
+        $orbit->delete('client/address/' . $id);
+
+        $this->clientPage();
 
     }
 

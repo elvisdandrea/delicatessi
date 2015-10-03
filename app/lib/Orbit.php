@@ -219,12 +219,55 @@ class Orbit {
         return $content;
     }
 
+    /**
+     * Executes a post method to the Orbit API
+     *
+     * @param   string      $method
+     * @param   array       $data
+     * @return  mixed
+     */
     public function post($method, $data) {
 
         $this->request->clearParams();
         $this->request->setMethod('post');
         $this->request->setURI($method . '?token=' . $this->getToken());
         foreach ($data as $param => $value) $this->request->addParam($param, $value);
+        $this->request->execute();
+
+        $content = json_decode($this->request->getContent(), true);
+        return $content;
+    }
+
+    /**
+     * Executes a put method to the Orbit API
+     *
+     * @param $method
+     * @param $data
+     * @return mixed
+     */
+    public function put($method, $data) {
+
+        $this->request->clearParams();
+        $this->request->setMethod('put');
+        $this->request->setURI($method . '?token=' . $this->getToken());
+        foreach ($data as $param => $value) $this->request->addParam($param, $value);
+        $this->request->execute();
+
+        $content = json_decode($this->request->getContent(), true);
+        return $content;
+    }
+
+    /**
+     * Executes a put method to the Orbit API
+     *
+     * @param $method
+     * @return mixed
+     */
+    public function delete($method) {
+
+        $this->request->clearParams();
+        $this->request->setMethod('delete');
+        $this->request->setURI($method . '?token=' . $this->getToken());
         $this->request->execute();
 
         $content = json_decode($this->request->getContent(), true);

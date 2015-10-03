@@ -29,10 +29,11 @@
                                     </label>
                                 </div>
                                 <div>
-                                    <input type="submit" value="sign in" id="register-submit">
+                                    <input type="submit" value="Entrar" id="register-submit">
+                                    <div id="loginmsg" class="alert-error" style="display: none"></div>
                                 </div>
                                 <div class="forget">
-                                    <a href="{$smarty.const.BASEDIR}client/forgotpwd">forgot your password</a>
+                                    <a href="{$smarty.const.BASEDIR}client/forgotpwd">Esqueci minha senha!</a>
                                 </div>
                             </form>
                             <!-- /Form -->

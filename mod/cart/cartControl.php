@@ -35,8 +35,11 @@ class cartControl extends Control {
 
     public function getZipAddress() {
         $address = Correios::SearchByZip($this->getPost('cep'));
+        $asoption = '';
+        if ($this->getQueryString('asoption')) $asoption = '?asoption=1';
         $this->view()->loadTemplate('resultzip');
         $this->view()->setVariable('address', $address);
+        $this->view()->setVariable('asoption', $asoption);
         $this->commitReplace($this->view()->render(), '#resultzip');
     }
 
@@ -52,9 +55,19 @@ class cartControl extends Control {
         $address = $post;
         $address['id'] = $result['address_id'];
         $this->commitReplace('', '#resultzip');
-        $this->view()->loadTemplate('addressoption');
+
+        $asOption = $this->getQueryString('asoption');
+
+        if ($asOption) {
+            $tpl = 'addressoption';
+        } else {
+            $tpl = 'addressitem';
+        }
+
+        $this->view()->loadTemplate($tpl);
         $this->view()->setVariable('address', $address);
         $this->commitAdd($this->view()->render(), '#addresslist');
+
     }
 
     public function shippingPrice() {
@@ -185,16 +198,24 @@ class cartControl extends Control {
         $pagSeguro->setAccountEmail('brunaconter@hotmail.com');
         $pagSeguro->setToken('807795BB8CBE4C2F98B4ED804C352EA0');
 
+
+        UID::set('purchase_data', $hash, $purchaseData);
+        $orbit->put('request/' . $cart['id'], array('pay_hash' => $hash));
+
         $pagSeguro->submit();
 
     }
 
     public function confirmed() {
 
-        debug($this->getQueryString('order'));
+        $hash = $this->getQueryString('order');
 
         $orbit = new Orbit();
-        #$purchase   = $orbit->post('request/purchase', $purchaseData);
+        $purchaseData = UID::get('purchase_data', $hash);
+        $purchase   = $orbit->post('request/purchase', $purchaseData);
+
+        $this->view()->loadTemplate('confirmed');
+        $this->commitReplace($this->view()->render(), '#content');
     }
 
     public function remove() {

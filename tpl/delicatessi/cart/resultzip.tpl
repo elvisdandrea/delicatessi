@@ -2,7 +2,7 @@
     {if (count($address) == 0)}
         <label>Cep não encontrado</label>
     {else}
-        <form method="post" action="cart/addaddress">
+        <form method="post" action="cart/addaddress{$asoption}">
             <label>Endereço:</label><label>{$address['logradouro']}</label>
             <input type="hidden" name="street_addr" value="{$address['logradouro']}">
             <label>Número:</label>

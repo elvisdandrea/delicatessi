@@ -6,7 +6,7 @@
             </div>
             <div class="log_reg">
                 <ul>
-                    <li><a href="{$smarty.const.BASEDIR}client" changeurl">Minha Conta</a> </li>
+                    <li><a href="{$smarty.const.BASEDIR}client" changeurl>Minha Conta</a> </li>
                     <span class="log"> | </span>
                     <li><a href="{$smarty.const.BASEDIR}client/register" changeurl>Criar Conta</a> </li>
                     <div class="clear"></div>
@@ -60,7 +60,7 @@
         <div class="header_right">
             <ul>
                 <li><a href="{$smarty.const.BASEDIR}client/favs" changeurl><i  class="art"></i><span class="color1">{intval($favs)}</span></a></li>
-                <li><a href="{$smarty.const.BASEDIR}client" changeurl><i  class="cart"></i><span id="cartitems">{intval($carts)}</span></a></li>
+                <li><a href="{$smarty.const.BASEDIR}cart" changeurl><i  class="cart"></i><span id="cartitems">{intval($carts)}</span></a></li>
             </ul>
         </div>
         <div class="clear"></div>

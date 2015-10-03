@@ -1,0 +1,1 @@
+<li>{$address['street_addr']},{$address['street_number']} {$address['street_additional']},{$address['hood']},{$address['city']} - {$address['state']}  <a class="link-remove" href="{$smarty.const.BASEDIR}client/removeaddr">Remover</a></li>
