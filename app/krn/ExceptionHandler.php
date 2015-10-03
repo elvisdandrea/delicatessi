@@ -53,7 +53,8 @@ Class ExceptionHandler extends Exception {
 
         $error = error_get_last();
         ENVDEV == '1' || $error['message'] = Language::FATAL_ERROR_MESSAGE();   // Preventing internal errors to be displayed on production server
-        if (in_array($error['type'],
+        if (isset($error['type']) &&
+            in_array($error['type'],
             array(E_CORE_ERROR, E_ERROR, E_PARSE, E_COMPILE_ERROR, E_ALL)))
             return
                 RESTFUL == '0' ?
