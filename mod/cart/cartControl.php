@@ -112,8 +112,11 @@ class cartControl extends Control {
 
     public function purchase() {
 
+        $orbit      = new Orbit();
         $shipping   = UID::get('shipping_options', $this->getPost('shipping_option'));
         $address_id = $this->getPost('address_id');
+
+        $hash = String::generateHash();
 
         if (!$shipping) {
             //TODO: Retornar mensagem shipping error
@@ -130,7 +133,9 @@ class cartControl extends Control {
             'EntregaSabado'         => 'weekend_delivery'
         );
 
-        $orbit      = new Orbit();
+        $clientAddr = $orbit->get('client/address/' . $address_id);
+        $address    = $clientAddr['address'];
+
         $request    = $orbit->get('request/cart', 1, 1, array('client_id' => UID::get('id')));
 
         if (!isset($request['cart']) || $request['cart'] === 0) {
@@ -139,6 +144,7 @@ class cartControl extends Control {
 
         $cart       = $request['cart'];
 
+        $purchaseData = array();
         foreach ($shipping_fields as $key => $field) {
             $purchaseData[$field] = $shipping[$key];
         }
@@ -149,12 +155,46 @@ class cartControl extends Control {
             'address_id'    => $address_id
         ));
 
-        $purchase   = $orbit->post('request/purchase', $purchaseData);
+        $requestItems = $orbit->get('client/cartitems', 1, 100, array('id' => UID::get('id')));
+        //TODO: validar erro na request
+        $cartItems    = $requestItems['cart'];
 
-        debug($purchase);
+        $pagSeguro = new PagSeguro();
 
-        //TODO: direcionar para pagSeguro
+        foreach ($cartItems as $item) {
+            //TODO: Quantidade variável
+            $pagSeguro->addItem($item['id'], $item['product_name'], $item['price'], '1', $item['weight']);
+        }
 
+        $pagSeguro->addSender('Bruna Conter', 'atendimento@delicatessi.com.br','51', '31150338');
+
+        $pagSeguro->addShipping(
+            PagSeguro::getShippingType($purchaseData['shipping_code']),
+            $purchaseData['shipping_value'],
+            $address['street_addr'],
+            $address['street_number'],
+            $address['street_additional'],
+            $address['hood'],
+            $address['city'],
+            $address['zip_code'],
+            $address['state']
+        );
+
+        $pagSeguro->setReference($hash);
+        $pagSeguro->setRedirectURL('http://localhost/delicatessi/cart/confirmed?order=' . $hash);
+        $pagSeguro->setAccountEmail('brunaconter@hotmail.com');
+        $pagSeguro->setToken('807795BB8CBE4C2F98B4ED804C352EA0');
+
+        $pagSeguro->submit();
+
+    }
+
+    public function confirmed() {
+
+        debug($this->getQueryString('order'));
+
+        $orbit = new Orbit();
+        #$purchase   = $orbit->post('request/purchase', $purchaseData);
     }
 
     public function remove() {

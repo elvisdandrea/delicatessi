@@ -441,6 +441,17 @@ class String {
         return preg_replace('/(^|_)([a-z])/e', 'strtoupper("\\2")', $word);
     }
 
+    /**
+     * Generates a random hash
+     *
+     * @return string
+     */
+    public static function generateHash() {
+
+        return md5(uniqid());
+    }
+
+
 }
 
 ?>

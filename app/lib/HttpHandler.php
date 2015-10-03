@@ -56,6 +56,11 @@ class HttpHandler {
     private $errors = array();
 
     /**
+     * @var array
+     */
+    private $info = array();
+
+    /**
      * The Response Content
      *
      * @var
@@ -152,6 +157,16 @@ class HttpHandler {
     }
 
     /**
+     * Sets the full request body
+     *
+     * @param $body
+     */
+    public function setBody($body) {
+
+        $this->params = $body;
+    }
+
+    /**
      * Stores all errors that may happen
      * along the process
      *
@@ -180,9 +195,25 @@ class HttpHandler {
      * Returns the Response Content after
      * the Request Execution
      *
+     * @param   bool    $convert
      * @return  mixed
      */
-    public function getContent() {
+    public function getContent($convert = false) {
+
+        if ($convert && isset($this->info['content_type'])) {
+            $content_types = explode(';', $this->info['content_type']);
+            $content_type  = current($content_types);
+
+            switch ($content_type) {
+                case 'application/xml':
+                    $this->content = json_decode(json_encode(simplexml_load_string($this->content)), true);
+                    break;
+                case 'application/json':
+                    $this->content = json_decode($this->content, true);
+                    break;
+            }
+
+        }
 
         return $this->content;
     }
@@ -258,6 +289,7 @@ class HttpHandler {
             curl_setopt($ch, CURLOPT_HTTPHEADER, $this->buildHeaders());
 
         $this->content = curl_exec($ch);
+        $this->info    = curl_getinfo($ch);
 
         if (!$this->content)
             $this->errors['EXTERNAL_REQUEST_EXECUTE_ERROR'] = curl_error($ch);

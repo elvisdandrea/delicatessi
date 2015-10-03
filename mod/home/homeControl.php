@@ -68,7 +68,7 @@ class homeControl extends Control {
 
         echo $this->view()->render();
         echo $this->view()->injectJSFiles();
-        echo Core::getController()->view()->injectJSFiles();
+        
         $this->terminate();
     }
 

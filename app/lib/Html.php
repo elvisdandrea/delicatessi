@@ -203,6 +203,20 @@ class Html {
         return '<script>Html.Redirect(\'' . $url . '\',\'' . $changeUrl . '\');</script>';
     }
 
+
+    /**
+     * Moves user to another page
+     *
+     * @param   string      $url        - The destination URL
+     * @return  string
+     */
+    public static function SetLocation($url) {
+        if (Core::isAjax())
+            return 'Html.SetLocation(\'' . $url . '\');';
+
+        return '<script>Html.SetLocation(\'' . $url . '\');</script>';
+    }
+
     /**
      * Function to Asynchronously load
      * a select input content
