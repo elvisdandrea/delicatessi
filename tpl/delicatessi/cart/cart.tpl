@@ -43,7 +43,7 @@
                         <p><label>Valor do Frete:</label><label id="shippingprice" class="value">(escolha um endereço e tipo para entrega)</label></p>
                         <p><label>Total:</label><label id="totalprice" class="value">(escolha um endereço e tipo para entrega)</label></p>
                         <form action="{$smarty.const.BASEDIR}cart/purchase" method="post">
-                            <select id="addresslist" name="address_id" onchange="Main.quickLink('{$smarty.const.BASEDIR}cart/shippingprice?id=' + this.value)">
+                            <select id="addresslist" class="addresslist" name="address_id" onchange="Main.quickLink('{$smarty.const.BASEDIR}cart/shippingprice?id=' + this.value)">
                                 <option value="">Selecione o endereço de entrega</option>
                                 {foreach from=$addresses item="address"}
                                     <option value="{$address['id']}">{$address['street_addr']}, {$address['street_number']} {$address['street_additional']}, {$address['hood']} - {$address['city']}/{$address['state']} ({$address['zip_code']})</option>

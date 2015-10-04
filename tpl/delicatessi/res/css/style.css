@@ -2430,13 +2430,20 @@ span.color7{
     display: inline-block;
 }
 
-.item_detail a:not(.link-remove) {
+.item_detail a:not(.link-remove),
+.exibition a {
     color: #6F4806;
 }
 
-.item_detail a:hover {
+.item_detail a:hover
+.exibition a:hover {
     color: #E9C486;
     transition: all 0.3s ease-in-out 0s;
+}
+
+.exibition p {
+    font-size: 1.5em;
+    font-family: "Maven Pro",sans-serif;
 }
 
 .item_detail label.title {
@@ -2459,11 +2466,81 @@ span.color7{
      text-align: right;
 }
 
+@media (max-width: 580px) {
+    .row_price {
+        padding: 20px 5px;
+        width: 50px;
+        font-size: 0.6725em;
+    }
+
+    .row .image_thumb {
+        max-width: 65px !important;
+    }
+
+    .link-remove {
+        display: none;
+    }
+
+    .item_detail .text {
+        font-size: 0.6725em;
+    }
+}
+
 
 .row .image_thumb {
     height: 100px;
     display: inline-block;
     max-width: 100px;
+    vertical-align: middle;
+}
+
+.image_thumb_small {
+    display: inline-block;
+    max-width: 50px;
+    vertical-align: middle;
+}
+
+.order {
+    background-color: #ffffff;
+    padding: 1.2em;
+}
+
+.order h3 {
+    font-size: 1.2em;
+    color: #6F4806;
+    text-transform: uppercase;
+    text-shadow: 0px 1px 0px #FFF;
+    border-bottom: 1px solid #E9E9E9;
+    padding-bottom: 10px;
+}
+
+.order h4 {
+    font-size: 1em;
+    color: #6F4806;
+    text-transform: uppercase;
+    text-shadow: 0px 1px 0px #FFF;
+    border-bottom: 1px solid #E9E9E9;
+    padding-bottom: 10px;
+}
+
+.title_small {
+    font-size: 0.9725em;
+    color: #555;
+    text-shadow: 0px 1px 0px #FFF;
+}
+
+.order-items {
+    padding: .4em;
+}
+
+.order-info p {
+    margin-bottom: 3px;
+    font-family: "Maven Pro",sans-serif;
+    font-size: 18px;
+}
+
+.order-item .item_detail {
+    display: inline-block;
     vertical-align: middle;
 }
 
@@ -2582,7 +2659,8 @@ span.color7{
     font-size: 18px;
 }
 
-.purchase_form label.value {
+.purchase_form label.value,
+.order-info label.value{
     font-size: 20px;
     color: #6F4806;
 }
@@ -2595,8 +2673,15 @@ span.color7{
     width: 40%;
 }
 
-#addresslist {
+select.addresslist {
     width: 100%;
+    height: 45px;
+    border: 0;
+    background-color: #242424;
+    color: #E9C486;
+    font-size: 20px;
+    font-family: "Maven Pro",sans-serif;
+
 }
 
 .left_content_small {

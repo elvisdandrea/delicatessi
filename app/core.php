@@ -252,6 +252,12 @@ class core {
      */
     public static function runMethod($uri) {
 
+        if (UNDER_CONSTRUCTION == '1' && !Core::isLocal()) {
+            $uri = array(
+                'home', 'construction'
+            );
+        }
+
         if (count($uri) < 1 || $uri[0] == '') return;
 
         $module = $uri[0].'Control';

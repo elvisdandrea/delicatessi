@@ -73,6 +73,7 @@ define('REQUIRE_LOGIN', '0');                   // If this framework should requ
 define('ORBIT_ID', 'delicatessi');
 
 define('LNG', 'pt');                            // Site Language
+define('UNDER_CONSTRUCTION', '1');              // If site is under construction
 
 (Core::isLocal() ?                              // An elegant way of preventing ENVDEV = 1 on deploy server
     define('ENVDEV', '1') :                     // Development Enviroment is ON

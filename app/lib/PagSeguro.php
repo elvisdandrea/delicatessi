@@ -86,7 +86,7 @@ class PagSeguro {
 
         $this->shipping = array(
             'type'      => $type,
-            'cost'      => number_format($cost, 2),
+            'cost'      => floatval(str_replace(',', '.', $cost)),
             'address'  => array(
                 'street'     => $street,
                 'number'     => $number,

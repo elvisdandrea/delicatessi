@@ -1,7 +1,7 @@
 <div class="top_bg">
     <div class="wrap">
         <div class="main_top">
-            <h2 class="style">Parabéns!</h2>
+            <h2 class="style">Em Breve!</h2>
         </div>
     </div>
 </div>
@@ -17,10 +17,9 @@
                 </div>
                 <div class="contact_right">
                     <div class="contact-form">
-                        <h3>Parabéns por sua excelente aquisição!</h3>
+                        <h3>Estamos em construção!</h3>
                         <div class="exibition">
-                            <p><label>Recebemos o seu pedido! Para acompanhar o status, acesse <a href="{$smarty.const.BASEDIR}client/orders">Meus Pedidos</a></label></p>
-                            <p><label>Você pode nos contatar através de nossa <a href="{$smarty.const.BASEDIR}contact">Página de contato</a></label></p>
+                            <p><label>Aguarde surpreenda-se.</label></p>
                         </div>
                     </div>
                 </div>

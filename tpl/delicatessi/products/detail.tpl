@@ -72,9 +72,11 @@
                 <div class="content-1">
                     <p class="para top"><span>{$product['product_name']}</span> {$product['description']}</p>
                     <ul>
-                        {foreach from=$charac item="characteristic"}
-                            <li>{$characteristic['charac']}</li>
-                        {/foreach}
+                        {if (count($carac) > 0)}
+                            {foreach from=$charac item="characteristic"}
+                                <li>{$characteristic['charac']}</li>
+                            {/foreach}
+                        {/if}
                     </ul>
                     <div class="clear"></div>
                 </div>

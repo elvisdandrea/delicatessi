@@ -104,16 +104,16 @@ class cartControl extends Control {
         $ship   = $this->getQueryString('id');
 
         $option         = UID::get('shipping_options', $ship);
-        $shippingPrice  = $option['Valor'];
+        $shippingPrice  = floatval(str_replace(',','.',$option['Valor']));
 
         $orbit     = new Orbit();
         $request   = $orbit->get('client/cartitems', 1, 100, array('id' => UID::get('id')));
         $cartItems = $request['cart'];
 
-        $orderPrice = 0;
+        $orderPrice = 0.0;
 
         foreach ($cartItems as $item) {
-            $orderPrice += $item['price'];
+            $orderPrice += floatval($item['price']);
         }
 
         $totalPrice = $orderPrice + $shippingPrice;
@@ -130,10 +130,18 @@ class cartControl extends Control {
         $shipping   = UID::get('shipping_options', $this->getPost('shipping_option'));
         $address_id = $this->getPost('address_id');
 
+        if (!$address_id) {
+            $this->commitReplace('Informe o endereço de entrega', '#submitmsg');
+            $this->commitShow('#submitmsg');
+            return;
+        }
+
         $hash = String::generateHash();
 
         if (!$shipping) {
-            //TODO: Retornar mensagem shipping error
+            $this->commitReplace('Informe o tipo de envio', '#submitmsg');
+            $this->commitShow('#submitmsg');
+            return;
         }
 
         $shipping_fields = array(
@@ -153,7 +161,9 @@ class cartControl extends Control {
         $request    = $orbit->get('request/cart', 1, 1, array('client_id' => UID::get('id')));
 
         if (!isset($request['cart']) || $request['cart'] === 0) {
-            //TODO: retornar erro no carrinho
+            $this->commitReplace('Ocorreu um problema na sua sessão. Faça o login novamente.', '#submitmsg');
+            $this->commitShow('#submitmsg');
+            return;
         }
 
         $cart       = $request['cart'];
@@ -163,26 +173,29 @@ class cartControl extends Control {
             $purchaseData[$field] = $shipping[$key];
         }
 
-        $purchaseData = array_merge($purchaseData, array(
-            'client_id'     => UID::get('id'),
-            'request_id'    => $cart['id'],
-            'address_id'    => $address_id
-        ));
-
         $requestItems = $orbit->get('client/cartitems', 1, 100, array('id' => UID::get('id')));
         //TODO: validar erro na request
         $cartItems    = $requestItems['cart'];
 
         $pagSeguro = new PagSeguro();
+        $totalPrice = 0;
 
         foreach ($cartItems as $item) {
             //TODO: Quantidade variável
             $pagSeguro->addItem($item['id'], $item['product_name'], $item['price'], '1', $item['weight']);
+            $totalPrice += $item['price'];
         }
+
+        $totalPrice +=  floatval(str_replace(',', '.', $shipping['Valor']));
+
+        $purchaseData['client_id'] = UID::get('id');
+        $purchaseData['request_id'] = $cart['id'];
+        $purchaseData['address_id'] = $address_id;
+        $purchaseData['pay_hash'] = $hash;
+        $purchaseData['price'] = $totalPrice;
 
         $config = $orbit->get('config');
         $config = current($config['config']);
-
 
         $pagSeguro->addSender($config['sender_name'], $config['sender_email'],$config['sender_area_code'], $config['sender_phone']);
 

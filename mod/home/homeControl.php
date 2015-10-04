@@ -95,6 +95,12 @@ class homeControl extends Control {
         return $this->view('header')->render();
     }
 
+    public function construction() {
+
+        $this->view()->loadTemplate('construction');
+        $this->commitReplace($this->view()->render(), '#content');
+    }
+
     /**
      * When returning the home page, loads the inner content only
      *

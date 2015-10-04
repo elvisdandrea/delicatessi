@@ -131,6 +131,11 @@ class clientControl extends Control {
 
     public function favs() {
 
+        if (!UID::isLoggedIn()) {
+            $this->loginPage();
+            return;
+        }
+
         $orbit    = new Orbit();
         $result   = $orbit->get('client/favouriteitems/' . UID::get('id'));
         $favItems = $result['favourites'];
@@ -138,6 +143,24 @@ class clientControl extends Control {
         $this->view()->loadTemplate('favs');
         $this->view()->setVariable('favItems', $favItems);
         $this->commitReplace($this->view()->render(), '#content');
+    }
+
+    public function orders() {
+
+        if (!UID::isLoggedIn()) {
+            $this->loginPage();
+            return;
+        }
+
+        $orbit    = new Orbit();
+        $result   = $orbit->get('client/orders/' . UID::get('id'));
+        $orders   = $result['orders'];
+
+        $this->view()->loadTemplate('orders');
+        $this->view()->setVariable('orders', $orders);
+
+        $this->commitReplace($this->view()->render(), '#content');
+
     }
 
 }
