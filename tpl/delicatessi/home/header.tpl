@@ -4,19 +4,21 @@
             <div class="logo">
                 <a href="{$smarty.const.BASEDIR}home" changeurl><img src="{$smarty.const.T_IMGURL}/logo.png" alt=""/></a>
             </div>
-            <div class="log_reg">
-                <ul>
-                    <li><a href="{$smarty.const.BASEDIR}client" changeurl>Minha Conta</a> </li>
-                    <span class="log"> | </span>
-                    <li><a href="{$smarty.const.BASEDIR}client/register" changeurl>Criar Conta</a> </li>
-                    <div class="clear"></div>
-                </ul>
-            </div>
-            <div class="web_search">
-                <form method="get" action="{$smarty.const.BASEDIR}products" changeurl>
-                    <input type="text" name="search" value="">
-                    <input type="submit" value=" " />
-                </form>
+            <div>
+                <div class="log_reg margin-menu-top">
+                    <ul>
+                        <li><a href="{$smarty.const.BASEDIR}client" changeurl>Minha Conta</a> </li>
+                        <span class="log"> | </span>
+                        <li><a href="{$smarty.const.BASEDIR}client/register" changeurl>Criar Conta</a> </li>
+                        <div class="clear"></div>
+                    </ul>
+                </div>
+                <div class="web_search margin-menu-top">
+                    <form method="get" action="{$smarty.const.BASEDIR}products" changeurl>
+                        <input type="text" name="search" value="">
+                        <input type="submit" value=" " />
+                    </form>
+                </div>
             </div>
             <div class="clear"></div>
         </div>
