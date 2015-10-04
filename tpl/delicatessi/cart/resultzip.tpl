@@ -1,21 +1,20 @@
-<div id="addaddressform" class="registration_form">
+<div id="addaddressform" class="registration_form purchase_form">
     {if (count($address) == 0)}
         <label>Cep não encontrado</label>
     {else}
         <form method="post" action="cart/addaddress{$asoption}">
-            <label>Endereço:</label><label>{$address['logradouro']}</label>
+            <p><label>Endereço:</label><label class="value">{$address['logradouro']}</label></p>
             <input type="hidden" name="street_addr" value="{$address['logradouro']}">
-            <label>Número:</label>
-            <input type="text" name="street_number" placeholder="Número" required />
-            <label>Complemento:</label><input type="text" name="street_additional" placeholder="Complemento" />
-            <label>Bairro:</label><label>{$address['bairro']}</label>
+            <p><label>Número:</label><input type="text" name="street_number" placeholder="Número" required /></p>
+            <p><label>Complemento:</label><input type="text" name="street_additional" placeholder="Complemento" /></p>
+            <p><label>Bairro:</label><label class="value">{$address['bairro']}</label></p>
             <input type="hidden" name="hood" value="{$address['bairro']}">
-            <label>Cidade:</label><label>{$address['localidade']}</label>
+            <p><label>Cidade:</label><label class="value">{$address['localidade']}</label></p>
             <input type="hidden" name="city" value="{$address['localidade']}">
-            <label>UF:</label><label>{$address['uf']}</label>
+            <p><label>UF:</label><label class="value">{$address['uf']}</label></p>
             <input type="hidden" name="state" value="{$address['uf']}">
             <input type="hidden" name="zip_code" value="{$address['cep']}">
-            <input class="btn" type="submit" value="Adicionar Endereço" />
+            <p><input class="btn" type="submit" value="Adicionar Endereço" /></p>
         </form>
 
     {/if}

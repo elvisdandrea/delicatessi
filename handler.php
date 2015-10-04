@@ -40,7 +40,7 @@ register_shutdown_function  (array('ExceptionHandler','FatalExceptionListener'))
  * @param $mixed
  * @param $element
  */
-function debug($mixed, $element = 'html'){
+function debug($mixed, $element = '#content'){
 
     //TODO: Use Termination function
     echo Debugger::debug($mixed, $element);

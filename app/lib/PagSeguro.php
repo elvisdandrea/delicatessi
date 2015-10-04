@@ -86,7 +86,7 @@ class PagSeguro {
 
         $this->shipping = array(
             'type'      => $type,
-            'cost'      => $cost,
+            'cost'      => number_format($cost, 2),
             'address'  => array(
                 'street'     => $street,
                 'number'     => $number,
@@ -103,24 +103,29 @@ class PagSeguro {
     public static function getShippingType($shipping_code) {
 
         $shipping_types = array(
-            '40010' => '1',
-            '40045' => '1',
-            '40126' => '1',
-            '40215' => '1',
-            '40290' => '1',
-            '40096' => '1',
-            '40436' => '1',
-            '40444' => '1',
-            '40568' => '1',
-            '40606' => '1',
-            '41106' => '2',
-            '41068' => '2',
-            '81019' => '1',
-            '81027' => '1',
-            '81035' => '1',
-            '81868' => '1',
-            '81833' => '1',
-            '81850' => '1'
+
+            // SEDEX
+            '40010' => '2',
+            '40045' => '2',
+            '40126' => '2',
+            '40215' => '2',
+            '40290' => '2',
+            '40096' => '2',
+            '40436' => '2',
+            '40444' => '2',
+            '40568' => '2',
+            '40606' => '2',
+            '81019' => '2',
+            '81027' => '2',
+            '81035' => '2',
+            '81868' => '2',
+            '81833' => '2',
+            '81850' => '2',
+
+            // PAC
+            '41106' => '1',
+            '41068' => '1'
+
         );
 
         $type =  '3';
@@ -174,8 +179,11 @@ class PagSeguro {
         $request->execute();
         $response = $request->getContent(true);
 
-        if (isset($response['code']))
+        if (isset($response['code'])) {
             echo Html::SetLocation(self::PAYMENT_URL . '?code=' . $response['code']);
+        } else {
+            return $response;
+        }
 
     }
 

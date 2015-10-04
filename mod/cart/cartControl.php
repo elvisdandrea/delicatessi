@@ -100,6 +100,7 @@ class cartControl extends Control {
     }
 
     public function selshipping() {
+
         $ship   = $this->getQueryString('id');
 
         $option         = UID::get('shipping_options', $ship);
@@ -206,7 +207,12 @@ class cartControl extends Control {
         UID::set('purchase_data', $hash, $purchaseData);
         $orbit->put('request/' . $cart['id'], array('pay_hash' => $hash));
 
-        $pagSeguro->submit();
+        $submit = $pagSeguro->submit();
+
+        if (isset($submit['error'])) {
+            $this->commitReplace('Não foi possível iniciar a transação. Por favor, entre em contato conosco e nos informe: ' . $submit['error']['message'],'#submitmsg');
+            $this->commitShow('#submitmsg');
+        }
 
     }
 
@@ -224,7 +230,12 @@ class cartControl extends Control {
 
     public function remove() {
 
+        $item_id = $this->getQueryString('item_id');
+
         $orbit  = new Orbit();
+        $orbit->delete('request/item/' . $item_id);
+
+        $this->cartPage();
 
     }
 

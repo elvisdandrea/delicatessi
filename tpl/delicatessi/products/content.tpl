@@ -8,7 +8,7 @@
 
 <div class="main_bg">
     <div class="wrap">
-        <div id="main" class="main">
+        <div id="main" class="main" url="{$smarty.const.BASEDIR}products?{$srchQuery}">
             {$content}
         </div>
     </div>

@@ -84,10 +84,14 @@ class productsControl extends Control {
             return;
         }
 
+        $srchQuery = html_entity_decode(http_build_query($this->getQueryString()));
+
         $page = $this->getQueryString('page');
         $page || $page = 1;
         $rp   = $this->getQueryString('rp');
         $rp   || $rp   = 6;
+
+        $this->view()->setVariable('page', $page);
 
         $filters = array();
         $query_filters = array(
@@ -104,10 +108,16 @@ class productsControl extends Control {
         $this->view()->loadTemplate('productresult');
         $this->view()->setVariable('products', $products['items']);
 
-
         $title = $products['total']['total'] . ' Produtos';
         if (intval($products['total']['total']) == 0) $title = 'Nenhum produto encontrado para esta pesquisa';
         $this->view()->setVariable('title', $title);
+
+        if (Core::isAjax() && $page > 1) {
+            if (count($products['items']) == 0) return;
+
+            $this->commitAdd($this->view()->render(), '#main');
+            return;
+        }
 
         $this->newView('content');
         $this->view('content')->loadTemplate('content');
@@ -115,6 +125,8 @@ class productsControl extends Control {
         $title = $this->getQueryString('category_name');
         $title || $title = 'Nossos Produtos';
         $this->view('content')->setVariable('title', $title);
+        $this->view('content')->setVariable('srchQuery', $srchQuery);
+        $this->view('content')->appendJs('autopage');
 
         $this->commitReplace($this->view('content')->render(), '#content');
         $this->scrollToElement('#content');
@@ -141,9 +153,12 @@ class productsControl extends Control {
         $result  = $this->orbitClient->get('product/' . $this->getId());
         $product = $result['items'];
 
+        $result  = $this->orbitClient->get('product/charac/' . $this->getId());
+        $charac  = $result['charac'];
+
         $this->view()->loadTemplate('detail');
         $this->view()->setVariable('product', $product);
-
+        $this->view()->setVariable('charac',  $charac);
 
         $filters = array(
             'category_name' => $product['category_name'],
