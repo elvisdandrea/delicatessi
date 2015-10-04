@@ -6,17 +6,19 @@
             <div class="product-thumbs">
                 <ul>
                     <li>
-                        <a class="cs-fancybox-thumbs" data-fancybox-group="thumb"  href="#"  title="" alt="">
+                        <a data-action="enlarge" class="cs-fancybox-thumbs" data-fancybox-group="thumb"  href="#"  title="" alt="">
                             <img src="{$product['image']}"  title="" alt="" /></a>
                     </li>
-                    <li>
-                        <a class="cs-fancybox-thumbs" data-fancybox-group="thumb"  href="#"  title="" alt="">
-                            <img src="{$product['image']}"  title="" alt="" /></a>
-                    </li>
+                    {foreach from=$images item="image"}
+                        <li>
+                            <a data-action="enlarge" class="cs-fancybox-thumbs" data-fancybox-group="thumb"  href="#"  title="" alt="">
+                                <img src="{$image['image']}"  title="" alt="" /></a>
+                        </li>
+                    {/foreach}
                 </ul>
             </div>
         <div class="product-image">
-            <img src="{$product['image']}" alt="{$product['product_name']}" title="{$product['product_name']}" />
+            <img id="product-image-large" src="{$product['image']}" alt="{$product['product_name']}" title="{$product['product_name']}" />
         </div>
         <!-- end product_slider -->
     </div>

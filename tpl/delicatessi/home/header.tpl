@@ -13,8 +13,8 @@
                 </ul>
             </div>
             <div class="web_search">
-                <form>
-                    <input type="text" value="">
+                <form method="get" action="{$smarty.const.BASEDIR}products" changeurl>
+                    <input type="text" name="search" value="">
                     <input type="submit" value=" " />
                 </form>
             </div>
@@ -40,8 +40,8 @@
         </div>
         <nav id="menu-left">
             <ul>
-                <li><form>
-                        <input type="text" value="">
+                <li><form method="get" action="{$smarty.const.BASEDIR}products" changeurl>
+                        <input type="text" name="search" value="">
                         <input type="submit" value=" " />
                     </form>
                 </li>

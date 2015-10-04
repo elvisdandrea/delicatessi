@@ -205,6 +205,8 @@ Html.prototype = {
      */
     Post: function(url,data,callback) {
 
+        if ($(this).attr('changeurl') !== undefined)
+            window.history.pushState(undefined, '', url);
         $.ajax({
             type: 'POST',
             url: url,
@@ -227,6 +229,10 @@ Html.prototype = {
      * @constructor
      */
     Get: function(url, callback) {
+
+        if ($(this).attr('changeurl') !== undefined)
+            window.history.pushState(undefined, '', url);
+
         $.ajax({
             type: 'GET',
             url: url,

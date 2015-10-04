@@ -49,6 +49,7 @@ class productsControl extends Control {
         $this->view()->setVariable('products', $products['items']);
         $this->view()->setVariable('title', 'Novos Produtos');
         $this->view()->setVariable('see_all', true);
+        $this->view()->setVariable('page', 1);
 
         return $this->view()->render();
     }
@@ -60,6 +61,7 @@ class productsControl extends Control {
         $this->view()->setVariable('products', $products['items']);
         $this->view()->setVariable('title', 'Mais Vendidos');
         $this->view()->setVariable('see_all', true);
+        $this->view()->setVariable('page', 1);
 
         return $this->view()->render();
     }
@@ -69,6 +71,7 @@ class productsControl extends Control {
         $products = $this->orbitClient->get('product', 1, 3, array('featured' => 1), false);
         $this->view()->loadTemplate('slider');
         $this->view()->setVariable('featured', $products['items']);
+        $this->view()->setVariable('page', 1);
         return $this->view()->render();
     }
 
@@ -91,6 +94,8 @@ class productsControl extends Control {
         $rp   = $this->getQueryString('rp');
         $rp   || $rp   = 6;
 
+        $search = $this->getQueryString('search');
+
         $this->view()->setVariable('page', $page);
 
         $filters = array();
@@ -101,6 +106,10 @@ class productsControl extends Control {
         foreach($query_filters as $filterField) {
             $filtered = $this->getQueryString($filterField);
             if ($filtered) $filters[$filterField] = $filtered;
+        }
+
+        if ($search) {
+            $filters['search']  = $search;
         }
 
         $products = $this->orbitClient->get('product', $page, $rp, $filters, array('sdate:desc'));
@@ -156,9 +165,15 @@ class productsControl extends Control {
         $result  = $this->orbitClient->get('product/charac/' . $this->getId());
         $charac  = $result['charac'];
 
+        $result  = $this->orbitClient->get('product/images/' . $this->getId());
+        $images  = $result['images'];
+
         $this->view()->loadTemplate('detail');
         $this->view()->setVariable('product', $product);
         $this->view()->setVariable('charac',  $charac);
+        $this->view()->setVariable('images',  $images);
+
+        $this->view()->appendJs('detail');
 
         $filters = array(
             'category_name' => $product['category_name'],

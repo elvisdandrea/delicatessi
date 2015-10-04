@@ -10,6 +10,7 @@
         {foreach name="pr" from=$products item="product"}
             {if (($smarty.foreach.pr.iteration - 1) > 0 && ($smarty.foreach.pr.iteration - 1) / 3 === 1)}
         </div>
+        <div class="clear"></div>
         <div class="grids_of_3">
             {/if}
             <div class="grid1_of_3">
@@ -23,6 +24,4 @@
             </div>
         {/foreach}
     </div>
-
-
 <div class="clear"></div>
