@@ -168,10 +168,19 @@ class productsControl extends Control {
         $result  = $this->orbitClient->get('product/images/' . $this->getId());
         $images  = $result['images'];
 
+        $isfav   = false;
+        $result  = $this->orbitClient->get('client/favourites/' . UID::get('id'), 1, 1, array('product_id' => $this->getId()));
+
+        if ($result['status'] == 200) {
+            $favs  = current($result['favourites']);
+            $isfav = isset($favs['product_id']) && $favs['product_id'] == $this->getId();
+        }
+
         $this->view()->loadTemplate('detail');
         $this->view()->setVariable('product', $product);
         $this->view()->setVariable('charac',  $charac);
         $this->view()->setVariable('images',  $images);
+        $this->view()->setVariable('isfav',   $isfav);
 
         $this->view()->appendJs('detail');
 
@@ -222,6 +231,27 @@ class productsControl extends Control {
         $cartPage->updateCounter();
         $cartPage->cartPage();
 
+    }
+
+    public function addFavourite() {
+
+        if (!UID::isLoggedIn()) {
+            $client = Services::get('client');
+            $client->register();
+            return;
+        }
+
+        $orbit = new Orbit();
+        $favs  = $orbit->post('client/favourites/' . UID::get('id'), array('product_id' => $this->getQueryString('id')));
+
+        #debug($favs);
+
+        $favRequest  = $orbit->get('client/countfav', 1, 1, array('id' => UID::get('id')));
+        $countfavs   = $favRequest['fav'];
+
+        $this->commitReplace(intval($countfavs), '#favitems');
+        $this->view()->loadTemplate('favlink');
+        $this->commitReplace($this->view()->render(), '#addfav');
     }
 
 }

@@ -129,4 +129,15 @@ class clientControl extends Control {
 
     }
 
+    public function favs() {
+
+        $orbit    = new Orbit();
+        $result   = $orbit->get('client/favouriteitems/' . UID::get('id'));
+        $favItems = $result['favourites'];
+
+        $this->view()->loadTemplate('favs');
+        $this->view()->setVariable('favItems', $favItems);
+        $this->commitReplace($this->view()->render(), '#content');
+    }
+
 }

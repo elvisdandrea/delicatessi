@@ -59,7 +59,7 @@
         </nav>
         <div class="header_right">
             <ul>
-                <li><a href="{$smarty.const.BASEDIR}client/favs" changeurl><i  class="art"></i><span class="color1">{intval($favs)}</span></a></li>
+                <li><a href="{$smarty.const.BASEDIR}client/favs" changeurl><i  class="art"></i><span id="favitems" class="color1">{intval($favs)}</span></a></li>
                 <li><a href="{$smarty.const.BASEDIR}cart" changeurl><i  class="cart"></i><span id="cartitems">{intval($carts)}</span></a></li>
             </ul>
         </div>

@@ -2418,10 +2418,20 @@ span.color7{
     position: relative;
     vertical-align: top;
     margin-left: 0.7em;
+    width: 50%;
 }
 
 .item_detail label {
     display: inline-block;
+}
+
+.item_detail a:not(.link-remove) {
+    color: #6F4806;
+}
+
+.item_detail a:hover {
+    color: #E9C486;
+    transition: all 0.3s ease-in-out 0s;
 }
 
 .item_detail label.title {

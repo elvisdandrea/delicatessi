@@ -17,11 +17,15 @@
                 {assign var="orderPrice" value="0"}
                 {foreach from=$cartItems item="item"}
                     <div class="row">
-                        <div class="image_thumb">
-                            <img src="{$item['image']}" alt="{$item['product_name']}"/>
-                        </div>
+                        <a href="{$smarty.const.BASEDIR}products/{$item['product_id']}">
+                            <div class="image_thumb">
+                                <img src="{$item['image']}" alt="{$item['product_name']}"/>
+                            </div>
+                        </a>
                         <div class="item_detail">
-                            <label class="title">{$item['product_name']}</label><a href="{$smarty.const.BASEDIR}cart/remove?item_id={$item['id']}" class="link-remove">- Retirar do carrinho</a>
+                            <label class="title">
+                                <a href="{$smarty.const.BASEDIR}products/{$item['product_id']}">{$item['product_name']}</a>
+                            </label><a href="{$smarty.const.BASEDIR}cart/remove?item_id={$item['id']}" class="link-remove">-Retirar</a>
                             <span class="text">{$item['description']}</span>
                         </div>
                         <span class="row_price">{String::convertTextFormat($item['price'], 'currency')}</span>

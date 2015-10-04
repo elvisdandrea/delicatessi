@@ -34,7 +34,13 @@
                         <input type="hidden" name="product_id" value="{$product['id']}">
                     </form>
                 </div>
-                <span><a href="{$smarty.const.BASEDIR}products/addfavourite?id={$product['id']}">Adicionar aos favoritos</a></span>
+                <span id="addfav">
+                    {if ($isfav)}
+                        <a href="{$smarty.const.BASEDIR}client/favs">Este é um de seus favoritos!</a>
+                    {else}
+                        <a href="{$smarty.const.BASEDIR}products/addfavourite?id={$product['id']}">Adicionar aos favoritos</a>
+                    {/if}
+                </span>
                 <p>{$product['description']}</p>
             </div>
             <div class="share-desc">
