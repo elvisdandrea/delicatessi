@@ -14,7 +14,7 @@
                 <!-- start registration -->
                 <div class="registration">
                     <div class="registration_left">
-                        <a href="#"><div class="reg_fb"><img src="web/images/facebook.png" alt=""><i>Login com Facebook</i><div class="clear"></div></div></a>
+                        <!--<a href="#"><div class="reg_fb"><img src="web/images/facebook.png" alt=""><i>Login com Facebook</i><div class="clear"></div></div></a>-->
                         <div class="registration_form">
                             <!-- Form -->
                             <form id="registration_form" action="{$smarty.const.BASEDIR}client/login" method="post">

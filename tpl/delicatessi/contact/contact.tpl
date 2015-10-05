@@ -43,6 +43,9 @@
                             <div>
                                 <span><input type="submit" value="Enviar"></span>
                             </div>
+                            <div id="mailmsg" class="alert-error" style="display: none;">
+
+                            </div>
                         </form>
                     </div>
                 </div>

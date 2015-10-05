@@ -28,6 +28,10 @@ class PagSeguro {
 
     private $token = '';
 
+    private $code;
+
+    private $response;
+
     public function __construct() {
 
         $this->xml   = new SimpleXMLElement('<checkout/>');
@@ -136,6 +140,16 @@ class PagSeguro {
 
     }
 
+    public function getResponse() {
+
+        return $this->response;
+    }
+
+    public function getCode() {
+
+        return $this->code;
+    }
+
     public function getXML() {
 
         $this->xml->addChild('currency', $this->currency);
@@ -180,11 +194,17 @@ class PagSeguro {
         $response = $request->getContent(true);
 
         if (isset($response['code'])) {
-            echo Html::SetLocation(self::PAYMENT_URL . '?code=' . $response['code']);
+            $this->code = $response['code'];
+            return $this->code;
         } else {
-            return $response;
+            $this->response = $response;
         }
 
+    }
+
+    public function redirect() {
+
+        echo Html::SetLocation(self::PAYMENT_URL . '?code=' . $this->code);
     }
 
 

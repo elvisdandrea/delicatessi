@@ -218,9 +218,15 @@ class cartControl extends Control {
 
 
         UID::set('purchase_data', $hash, $purchaseData);
-        $orbit->put('request/' . $cart['id'], array('pay_hash' => $hash));
 
-        $submit = $pagSeguro->submit();
+        $code = $pagSeguro->submit();
+
+        if ($code) {
+            $response = $orbit->put('request/' . $cart['id'], array('pay_hash' => $hash, 'pay_token' => $code));
+            $pagSeguro->redirect();
+        }
+
+        $submit = $pagSeguro->getResponse();
 
         if (isset($submit['error'])) {
             $this->commitReplace('Não foi possível iniciar a transação. Por favor, entre em contato conosco e nos informe: ' . $submit['error']['message'],'#submitmsg');

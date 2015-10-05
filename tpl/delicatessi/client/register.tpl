@@ -7,7 +7,7 @@
                 <!-- start registration -->
                 <div class="registration">
                     <div class="registration_left">
-                        <a href="{$smarty.const.BASEDIR}client/loginfacebook{if ($product_id)}?product_id={$product_id}{/if}"><div class="reg_fb"><img src="{$smarty.const.T_IMGURL}/facebook.png" alt=""><i>Login com Facebook</i><div class="clear"></div></div></a>
+                       <!-- <a href="{$smarty.const.BASEDIR}client/loginfacebook{if ($product_id)}?product_id={$product_id}{/if}"><div class="reg_fb"><img src="{$smarty.const.T_IMGURL}/facebook.png" alt=""><i>Login com Facebook</i><div class="clear"></div></div></a>-->
                         <div class="registration_form">
                             <!-- Form -->
                             <form id="registration_form" action="{$smarty.const.BASEDIR}client/login{if ($product_id)}?product_id={$product_id}{/if}" method="post">
@@ -38,7 +38,7 @@
                 <h3>Criar uma nova conta</h3>
                 <p>Crie sua conta e efetue rapidamente a compra de produtos, além de armazenar sua lista de itens favoritos.</p>
                 <div class="registration_left">
-                    <a href="{$smarty.const.BASEDIR}client/registerfacebook{if ($product_id)}?product_id={$product_id}{/if}"><div class="reg_fb"><img src="{$smarty.const.T_IMGURL}/facebook.png" alt=""><i>Criar conta com Facebook</i><div class="clear"></div></div></a>
+                    <!--<a href="{$smarty.const.BASEDIR}client/registerfacebook{if ($product_id)}?product_id={$product_id}{/if}"><div class="reg_fb"><img src="{$smarty.const.T_IMGURL}/facebook.png" alt=""><i>Criar conta com Facebook</i><div class="clear"></div></div></a>-->
                     <div class="registration_form">
                         <!-- Form -->
                         <form id="registration_form" action="{$smarty.const.BASEDIR}client/registerclient{if ($product_id)}?product_id={$product_id}{/if}" method="post">

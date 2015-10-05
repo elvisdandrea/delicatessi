@@ -54,6 +54,7 @@ GMaps.prototype = {
      * @param zoom          - Start Zoom
      */
     init : function(elementId, lat, lng, zoom) {
+        GMaps.maps = {};
         var latlng = new google.maps.LatLng(lat, lng);
         var myOptions = {
             zoom: zoom,

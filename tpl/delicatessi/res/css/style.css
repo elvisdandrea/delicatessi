@@ -1398,6 +1398,7 @@ ul.news li .desc h4 a:hover{
 .map{
 	border: 1px solid #DDDDDD;
 	margin: 6% 0 4%;
+    height: 150px;
 }
 .contact_right h3{
 	margin-bottom:2%;
