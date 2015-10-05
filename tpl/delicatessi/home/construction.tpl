@@ -19,7 +19,7 @@
                     <div class="contact-form">
                         <h3>Estamos em construção!</h3>
                         <div class="exibition">
-                            <p><label>Aguarde surpreenda-se.</label></p>
+                            <p><label>Aguarde e surpreenda-se.</label></p>
                         </div>
                     </div>
                 </div>
