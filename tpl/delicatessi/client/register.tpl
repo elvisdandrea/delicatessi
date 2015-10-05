@@ -75,6 +75,7 @@
                             <div>
                                 <input type="submit" value="Criar minha conta" id="register-submit">
                             </div>
+                            <div id="loginmsg" class="alert-error" style="display: none"></div>
                         </form>
                         <!-- /Form -->
                     </div>

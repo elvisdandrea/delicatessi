@@ -24,11 +24,13 @@
                             </ul>
                         {/foreach}
                         <span >Endereços de entrega:</span>
-                        {foreach from=$addressList item="address"}
-                            <ul id="addresslist">
-                                <li>{$address['street_addr']},{$address['street_number']} {$address['street_additional']},{$address['hood']},{$address['city']} - {$address['state']}  <a class="link-remove" href="{$smarty.const.BASEDIR}client/removeaddr?id={$address['id']}">Remover</a></li>
-                            </ul>
-                        {/foreach}
+                        <ul id="addresslist">
+                        {if (count($addressList) > 0)}
+                            {foreach from=$addressList item="address"}
+                                    <li>{$address['street_addr']},{$address['street_number']} {$address['street_additional']},{$address['hood']},{$address['city']} - {$address['state']}  <a class="link-remove" href="{$smarty.const.BASEDIR}client/removeaddr?id={$address['id']}">Remover</a></li>
+                            {/foreach}
+                        {/if}
+                        </ul>
                         <hr>
                         <h3>Adicionar um endereço de entrega</h3>
                         <div >

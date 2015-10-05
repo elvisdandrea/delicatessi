@@ -34,12 +34,15 @@ class clientControl extends Control {
         $this->commitReplace($this->view()->render(), '#content');
     }
 
-    public function login() {
+    public function login($email = false, $passwd = false) {
+
+        $email  || $email  = $this->getPost('email');
+        $passwd || $passwd = $this->getPost('passwd');
 
         $orbit = new Orbit();
         $client = $orbit->get('client/login', 1, 1, array(
-            'email'     => $this->getPost('email'),
-            'passwd'    => $this->getPost('passwd')
+            'email'     => $email,
+            'passwd'    => $passwd
         ));
 
         if ($client['status'] == 200) {
@@ -102,20 +105,11 @@ class clientControl extends Control {
         $client = $orbit->post('client/addclient', $data);
 
         if ($client['status'] != 200) {
-            //TODO: validar erro da API
+            $this->commitReplace($client['message'], '#loginmsg');
+            $this->commitShow('#loginmsg');
         }
 
-        $product_id = $this->getQueryString('product_id');
-
-        if ($product_id) {
-            $productPage = Services::get('products');
-            $productPage->setId($product_id);
-            $productPage->viewProduct();
-            return;
-        }
-
-        $home = Services::get('home');
-        $home->homePage();
+        $this->login();
 
     }
 
