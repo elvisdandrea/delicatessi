@@ -9,6 +9,8 @@
         <link type="text/css" rel="stylesheet" href="{$smarty.const.T_CSSURL}/jquery.mmenu.all.css" />
         <link href="{$smarty.const.T_CSSURL}/slider.css" rel="stylesheet" type="text/css" media="all" />
         <script type="text/javascript" src="{$smarty.const.T_JSURL}/jquery.min.js"></script>
+        <script type="text/javascript" src="http://maps.google.com/maps/api/js?sensor=false"></script>
+        <script src="{$smarty.const.JSURL}/gmaps.js"></script>
     </head>
     <body>
         {$page_header}
