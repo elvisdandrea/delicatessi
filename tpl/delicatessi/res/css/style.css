@@ -2711,5 +2711,12 @@ select.addresslist {
     width: 20em;
     display: inline-block;
     float: left;
-    margin-right: 3em;
+    margin-right: 1em;
+}
+
+.slider-image img {
+    width: 80%;
+    height: 80%;
+    border: 5px solid #6F4806;
+    border-radius: 50%;
 }
