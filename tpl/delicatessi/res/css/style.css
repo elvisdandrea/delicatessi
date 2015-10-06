@@ -2288,6 +2288,7 @@ span.color7{
     margin-right: auto;
     display: block;
     min-height: 300px;
+    overflow: hidden;
 }
 
 .thumb_img img {
