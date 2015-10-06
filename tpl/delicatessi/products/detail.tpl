@@ -47,8 +47,8 @@
                 <div class="share">
                     <h4>Compartilhar:</h4>
                     <ul class="share_nav">
-                        <li><a href="{$smarty.const.BASEDIR}product/share?social=facebook"><img src="{$smarty.const.T_IMGURL}/facebook.png" title="facebook"></a></li>
-                        <li><a href="{$smarty.const.BASEDIR}product/share?social=twitter"><img src="{$smarty.const.T_IMGURL}/twitter.png" title="Twiiter"></a></li>
+                        <li><a href="https://www.facebook.com/sharer/sharer.php?u={$smarty.const.MAINURL}/products/{$product['id']}"><img src="{$smarty.const.T_IMGURL}/facebook.png" title="facebook"></a></li>
+                        <li><a href="https://twitter.com/home?status={$smarty.const.MAINURL}/products/{$product['id']}"><img src="{$smarty.const.T_IMGURL}/twitter.png" title="Twiiter"></a></li>
                     </ul>
                 </div>
                 <div class="clear"></div>
