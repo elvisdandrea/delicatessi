@@ -4,9 +4,9 @@
 class PagSeguro {
 
     const PAGSEGURO_URL = 'https://ws.pagseguro.uol.com.br/v2/checkout';
-    //const  PAGSEGURO_URL = 'https://ws.sandbox.pagseguro.uol.com.br/v2/checkout';   // Sandbox
+//    const  PAGSEGURO_URL = 'https://ws.sandbox.pagseguro.uol.com.br/v2/checkout';   // Sandbox
     const  PAYMENT_URL = 'https://pagseguro.uol.com.br/v2/checkout/payment.html';
-    //const  PAYMENT_URL   = 'https://sandbox.pagseguro.uol.com.br/v2/checkout/payment.html'; //Sandbox
+//    const  PAYMENT_URL   = 'https://sandbox.pagseguro.uol.com.br/v2/checkout/payment.html'; //Sandbox
 
     private $xml;
 
