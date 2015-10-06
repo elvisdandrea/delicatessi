@@ -1,3 +1,8 @@
+
+<meta property="og:title" content="Delicatessi - {$product['product_name']}" />
+<meta property="og:description" content="{$product['product_description']}" />
+<meta property="og:image" content="{$product['image']}" />
+
 <div class="single">
 <!-- start span1_of_1 -->
 <div class="left_content">
