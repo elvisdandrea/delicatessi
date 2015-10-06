@@ -7,10 +7,10 @@
                     {foreach from=$featured item="row"}
                         <li>
                             <img src="{if ($row['cover_image'] != '')}{$row['cover_image']}{else}{$smarty.const.T_IMGURL}/slider-default.jpg{/if}" alt="image06"/>
-                            <div class="slider-image">
-                                <img src="{$row['image']}" alt="{$row['product_name']}"/>
-                            </div>
                             <div class="ei-title">
+                                <div class="slider-image">
+                                    <img src="{$row['image']}" alt="{$row['product_name']}"/>
+                                </div>
                                 <h3 class="btn">{String::convertTextFormat($row['price'], 'currency')}</h3>
                                 <h2>{$row['product_name']}</h2>
                                 <h3 class="active">{$row['description']}

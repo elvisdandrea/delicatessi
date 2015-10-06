@@ -2705,3 +2705,11 @@ select.addresslist {
     }
 
 }
+
+.slider-image {
+    opacity: 1 !important;
+    width: 20em;
+    display: inline-block;
+    float: left;
+    margin-right: 3em;
+}
