@@ -71,18 +71,12 @@
             <div class="content">
                 <div class="content-1">
                     <p class="para top"><span>{$product['product_name']}</span> {$product['description']}</p>
-                    <ul>
-                        {if (count($carac) > 0)}
-                            {foreach from=$charac item="characteristic"}
-                                <li>{$characteristic['charac']}</li>
-                            {/foreach}
-                        {/if}
-                    </ul>
                     <div class="clear"></div>
                 </div>
                 <div class="content-2">
                     <p class="para"><span>GARANTIA</span>
-                    1 ano de garantia na cor
+                    Todas as Semi-jóias são banhadas a ouro ou prata de ótima qualidade. <br>
+                        Oferecemos 1 ano de garantia na cor e pedrarias para todas as Semi-jóias
                     </p>
                 </div>
             </div>

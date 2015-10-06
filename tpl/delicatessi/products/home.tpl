@@ -3,7 +3,6 @@
     <div class="wrap">
         <div id="main" class="main">
             {$recent}
-            {$bestsellers}
 
         </div>
     </div>

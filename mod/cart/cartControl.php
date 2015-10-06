@@ -88,7 +88,37 @@ class cartControl extends Control {
         $station   = current($source['station']);
         $zip_from  = $station['zip_code'];
 
-        $shipping = Correios::GetShippingPrice($zip_from, $zip_to, 1, 20, 20, 20);
+        $cartItems = $orbit->get('client/cartitems', 1, 100, array('id' => UID::get('id')));
+        $cart      = $cartItems['cart'];
+
+        $weigth   = 0;
+        $width    = 0;
+        $height   = 0;
+        $diameter = 0;
+        $length   = 0;
+
+        foreach ($cart as $item) {
+            $width    += $item['width'];
+            $height   += $item['height'];
+            $diameter += $item['diameter'];
+            $length   += $item['length'];
+            $weigth   += $item['weight'];
+        }
+
+        $height > 20 || $height = 20;
+        $width  > 20 || $width  = 20;
+        $length > 20 || $length = 20;
+        $diameter || $diameter = 0;
+
+//        debug(array(
+//            $height,
+//            $width,
+//            $length,
+//            $weigth,
+//            $diameter
+//        ));
+
+        $shipping = Correios::GetShippingPrice($zip_from, $zip_to, 1, $length, $height, $width, $diameter);
 
         $shipping_options = $shipping['cServico'];
         UID::set('shipping_options', $shipping_options);
