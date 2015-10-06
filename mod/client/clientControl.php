@@ -46,7 +46,10 @@ class clientControl extends Control {
         ));
 
         if ($client['status'] == 200) {
+
+            $phones = $orbit->get('client/phones/' . $client['uid']['id']);
             UID::set($client['uid']);
+            UID::set('phones', $phones['phones']);
 
 
             $orbit = new Orbit();

@@ -227,7 +227,20 @@ class cartControl extends Control {
         $config = $orbit->get('config');
         $config = current($config['config']);
 
-        $pagSeguro->addSender($config['sender_name'], $config['sender_email'],$config['sender_area_code'], $config['sender_phone']);
+        $phones = UID::get('phones');
+        $area  = '';
+        $phone = '';
+
+        if (count($phones) > 0) {
+            $firstPhone = current($phones);
+            $phoneInfo = explode(' ', $firstPhone['phone_number'], 2);
+            if (count($phoneInfo) > 1) {
+                $area  = $phoneInfo[0];
+                $phone = str_replace('-', '', $phoneInfo[1]);
+            }
+        }
+
+        $pagSeguro->addSender(UID::get('client_name'), UID::get('email'), $area, $phone);
 
         $pagSeguro->addShipping(
             PagSeguro::getShippingType($purchaseData['shipping_code']),

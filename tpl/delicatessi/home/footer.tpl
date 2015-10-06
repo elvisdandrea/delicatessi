@@ -22,6 +22,7 @@
                     <div class="fb-page" data-href="https://www.facebook.com/delicatessi" data-small-header="false" data-adapt-container-width="true" data-hide-cover="false" data-show-facepile="true" data-show-posts="false"><div class="fb-xfbml-parse-ignore"><blockquote cite="https://www.facebook.com/delicatessi"><a href="https://www.facebook.com/delicatessi">Delicatessi</a></blockquote></div></div>
                 </div>
                 <div class="clear"></div>
+                Desenvolvimento <a href="http://gravi.com.br">GRAVI&copy;</a>
             </div>
         </div>
     </div>
