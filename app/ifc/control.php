@@ -92,6 +92,13 @@ class Control {
     private $moduleName;
 
     /**
+     * Header MetaValues
+     *
+     * @var array
+     */
+    private $metas = array();
+
+    /**
      * Thou shalt not call superglobals directly
      * even though I'm doing it in this function
      */
@@ -364,6 +371,22 @@ class Control {
     protected function commitFormInvalid($element, $stay = true) {
         echo Html::InvalidForm($element);
         $stay || $this->terminate();
+    }
+
+    /**
+     * Add a MetaValue
+     *
+     * @param   string  $property
+     * @param   string  $content
+     */
+    protected function setMeta($property, $content) {
+
+        $this->metas[$property] = $content;
+    }
+
+    public function getMetaValues() {
+
+        return $this->metas;
     }
 
     /**

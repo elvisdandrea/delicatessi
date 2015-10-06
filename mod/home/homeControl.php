@@ -61,8 +61,18 @@ class homeControl extends Control {
 
         $this->view()->setVariable('page_header', $this->getHeader());
 
-        $content = Core::getMethodContent($uri);
+        $content    = Core::getMethodContent($uri);
+        $metavalues = Core::getController()->getMetaValues();
+        $metas      = '';
+        if (count($metavalues) > 0) {
+            $this->newView('meta');
+            $this->view('meta')->loadTemplate('meta');
+            $this->view('meta')->setVariable('metas', $metavalues);
+            $metas = $this->view('meta')->render();
+        }
+
         $this->view()->setVariable('page_content', $content);
+        $this->view()->setVariable('metas', $metas);
 
         $this->view()->appendJs('home');
 
