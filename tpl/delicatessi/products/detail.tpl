@@ -2,6 +2,7 @@
 <meta property="og:title" content="Delicatessi - {$product['product_name']}" />
 <meta property="og:description" content="{$product['product_description']}" />
 <meta property="og:image" content="{$product['image']}" />
+<meta property="og:url" content="{$smarty.const.MAINURL}products/{$product['id']}" />
 
 <div class="single">
 <!-- start span1_of_1 -->
@@ -52,8 +53,8 @@
                 <div class="share">
                     <h4>Compartilhar:</h4>
                     <ul class="share_nav">
-                        <li><a href="https://www.facebook.com/sharer/sharer.php?u={$smarty.const.MAINURL}/products/{$product['id']}"><img src="{$smarty.const.T_IMGURL}/facebook.png" title="facebook"></a></li>
-                        <li><a href="https://twitter.com/home?status={$smarty.const.MAINURL}/products/{$product['id']}"><img src="{$smarty.const.T_IMGURL}/twitter.png" title="Twiiter"></a></li>
+                        <li><a href="https://www.facebook.com/sharer/sharer.php?u={$smarty.const.MAINURL}products/{$product['id']}"><img src="{$smarty.const.T_IMGURL}/facebook.png" title="facebook"></a></li>
+                        <li><a href="https://twitter.com/home?status={$smarty.const.MAINURL}products/{$product['id']}"><img src="{$smarty.const.T_IMGURL}/twitter.png" title="Twiiter"></a></li>
                     </ul>
                 </div>
                 <div class="clear"></div>
