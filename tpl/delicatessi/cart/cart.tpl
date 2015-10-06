@@ -53,7 +53,7 @@
 
                             </div>
                             <input type="submit" value="Finalizar Compra" class="btn" />
-                            <img src="https://p.simg.uol.com.br/out/pagseguro/i/banners/pagamento/avista_estatico_550_70.gif" alt="pagseguro"/>
+                            <img style="margin-top: 10px;" src="https://p.simg.uol.com.br/out/pagseguro/i/banners/pagamento/avista_estatico_550_70.gif" alt="pagseguro"/>
                         </form>
                     </div>
                     <div id="submitmsg" class="alert-error" style="display: none"></div>
