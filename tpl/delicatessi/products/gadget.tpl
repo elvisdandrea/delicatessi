@@ -1,5 +1,5 @@
 <div class="left_sidebar right">
-    <h4>Produtos Similares</h4>
+    <h4>Quem gostou desse também gostou de</h4>
     {if (count($products) > 0)}
         {foreach from=$products item="product"}
             <div class="left_products">
