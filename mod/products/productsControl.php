@@ -44,7 +44,7 @@ class productsControl extends Control {
 
     public function getRecentProducts() {
 
-        $products = $this->orbitClient->get('product', 1, 3, false, array('sdate:desc'));
+        $products = $this->orbitClient->get('product', 1, 6, false, array('rand'));
         $this->view()->loadTemplate('productresult');
         $this->view()->setVariable('products', $products['items']);
         $this->view()->setVariable('title', 'Novos Produtos');

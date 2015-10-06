@@ -211,6 +211,19 @@ class Orbit {
             }
         }
 
+        if ($filters) foreach ($filters as $filter => $value)
+            $this->request->addParam($filter, $value);
+
+
+        if ($order) {
+            $orderResult = array();
+            foreach ($order as $field => $dir) {
+                $orderResult[] = (is_string($field) ? $field . ':' : '') . $dir;
+            }
+
+            $this->request->addParam('order', implode(';', $orderResult));
+        }
+
         $this->request->addParam('page', $page);
         $this->request->addParam('rp',   $rp);
         $this->request->execute();
