@@ -195,6 +195,15 @@ Html.prototype = {
         });
     },
 
+    SetMeta : function(property, content) {
+
+        if ($(['property="' + property + '"']).html() == undefined) {
+            $('head').append('<meta property="' + property + '" content="' + content + '" />');
+        } else {
+            $(['property="' + property + '"']).attr('property', property).attr('content', content);
+        }
+    },
+
     /**
      * Runs an ajax POST
      *

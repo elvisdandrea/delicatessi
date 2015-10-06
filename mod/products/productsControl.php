@@ -197,6 +197,12 @@ class productsControl extends Control {
         $this->view('content')->setVariable('content', $this->view()->render());
         $this->commitReplace($this->view('content')->render(), '#content');
         $this->scrollToElement('#content');
+
+        Html::SetMeta('og:title', $product['product_name']);
+        Html::SetMeta('og:description', $product['description']);
+        Html::SetMeta('og:image', $product['image']);
+        Html::SetMeta('og:url', MAINURL . 'products/' . $product['id']);
+
     }
 
     public function addToCart() {

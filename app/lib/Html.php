@@ -287,6 +287,21 @@ class Html {
     }
 
     /**
+     * Sets a HEAD Meta Value
+     *
+     * @param $property
+     * @param $content
+     */
+    public static function SetMeta($property, $content) {
+        if (Core::isAjax()) {
+            echo 'Html.SetMeta("' . $property . '","' . $content . '");';
+            return;
+        }
+
+        echo '<script>Html.SetMeta("' . $property . '","' . $content . '");</script>';
+    }
+
+    /**
      * Renders a Google Map inside an element
      *
      * @param   $elementId    - The element to contain the map
