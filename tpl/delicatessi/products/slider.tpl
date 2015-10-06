@@ -6,7 +6,7 @@
                 <ul class="ei-slider-large">
                     {foreach from=$featured item="row"}
                         <li>
-                            <img src="{if ($row['cover_image'] != '')}{$row['cover_image']}{else}{$smarty.const.T_IMGURL}/slider-image1{/if}" alt="image06"/>
+                            <img src="{if ($row['cover_image'] != '')}{$row['cover_image']}{else}{$smarty.const.T_IMGURL}/slider-default.jpg{/if}" alt="image06"/>
                             <div class="ei-title">
                                 <h3 class="btn">{String::convertTextFormat($row['price'], 'currency')}</h3>
                                 <h2>{$row['product_name']}</h2>
