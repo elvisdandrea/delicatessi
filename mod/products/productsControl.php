@@ -134,7 +134,7 @@ class productsControl extends Control {
         $title = $this->getQueryString('category_name');
         $title || $title = 'Nossos Produtos';
         $this->view('content')->setVariable('title', $title);
-        $this->view('content')->setVariable('srchQuery', $srchQuery);
+        $this->view('content')->setVariable('url', BASEDIR . 'products?' . $srchQuery);
         $this->view('content')->appendJs('autopage');
 
         $this->commitReplace($this->view('content')->render(), '#content');

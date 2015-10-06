@@ -8,7 +8,7 @@
 
 <div class="main_bg">
     <div class="wrap">
-        <div id="main" class="main" url="{$smarty.const.BASEDIR}products?{$srchQuery}">
+        <div id="main" class="main" {if (isset($url))}url="{$url}"{/if}>
             {$content}
         </div>
     </div>
