@@ -74,7 +74,7 @@
                     <div class="clear"></div>
                 </div>
                 <div class="content-2">
-                    <p class="para"><span>GARANTIA</span>
+                    <p class="para">
                     Todas as Semi-jóias são banhadas a ouro ou prata de ótima qualidade. <br>
                         Oferecemos 1 ano de garantia na cor e pedrarias para todas as Semi-jóias
                     </p>
