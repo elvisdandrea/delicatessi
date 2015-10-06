@@ -4,16 +4,16 @@
             <div class="contact">
                 <div class="contact_left">
                     <div class="contact_info">
-                        <h3>Nós estamos aqui!</h3>
-                        <div id="map" class="map">
+                        {*<h3>Nós estamos aqui!</h3>*}
+                        {*<div id="map" class="map">*}
 
-                        </div>
+                        {*</div>*}
                     </div>
                     <div class="company_address">
                         <h3>Sobre a Delicatessi:</h3>
-                        <p>Rua Evaristo da Veiga, 582</p>
-                        <p>Canoas, RS</p>
-                        <p>Brasil</p>
+                        {*<p>Rua Evaristo da Veiga, 582</p>*}
+                        {*<p>Canoas, RS</p>*}
+                        {*<p>Brasil</p>*}
                         <p>Fone:(51) 3115-0338</p>
                         <p>Celular: (51) 9598-8243</p>
                         <p>Email: <a href="mailto:atendimento@delicatessi.com.br">atendimento@delicatessi.com.br</a></p>

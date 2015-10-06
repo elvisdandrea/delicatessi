@@ -13,8 +13,8 @@ class contactControl extends Control {
         $this->commitReplace($this->view()->render(), '#content');
 
         $location = Geolocation::getCoordinates('Evaristo da Veiga', '582', 'Canoas', '92420080', 'BR');
-        Html::initGMap('map', $location['lat'], $location['lng'], 14);
-        Html::addGMapMarker('map', $location['lat'], $location['lng'], '', '');
+        #Html::initGMap('map', $location['lat'], $location['lng'], 14);
+        #Html::addGMapMarker('map', $location['lat'], $location['lng'], '', '');
 
     }
 

@@ -11,11 +11,13 @@
                         <span class="log"> | </span>
                         <li><a href="{$smarty.const.BASEDIR}client/register" changeurl>Criar Conta</a> </li>
                         <div class="clear"></div>
+                        {*<span class="log"> | </span>*}
+                        <li><a href="{$smarty.const.BASEDIR}contact" changeurl>Fale Conosco</a> </li>
                     </ul>
                 </div>
                 <div class="web_search margin-menu-top">
                     <form method="get" action="{$smarty.const.BASEDIR}products" changeurl>
-                        <input type="text" name="search" value="">
+                        <input type="text" name="search" placeholder="O que você procura?" value="">
                         <input type="submit" value=" " />
                     </form>
                 </div>
@@ -33,7 +35,6 @@
                 {foreach from=$categories item="row"}
                     <li><a href="{$smarty.const.BASEDIR}products?category_name={$row['category_name']}" changeurl>{$row['category_name']}</a></li>
                 {/foreach}
-                <li><a href="{$smarty.const.BASEDIR}contact" changeurl>Contato</a></li>
                 <div class="clear"></div>
             </ul>
         </div>
@@ -43,7 +44,7 @@
         <nav id="menu-left">
             <ul>
                 <li><form method="get" action="{$smarty.const.BASEDIR}products" changeurl>
-                        <input type="text" name="search" value="">
+                        <input type="text" name="search" placeholder="O que você procura?" value="">
                         <input type="submit" value=" " />
                     </form>
                 </li>
@@ -52,7 +53,7 @@
                 {foreach from=$categories item="row"}
                     <li><a href="{$smarty.const.BASEDIR}products?category_name={$row['category_name']}" changeurl>{$row['category_name']}</a></li>
                 {/foreach}
-                <li><a href="{$smarty.const.BASEDIR}contact" changeurl>Contato</a></li>
+                <li><a href="{$smarty.const.BASEDIR}contact" changeurl>Fale Conosco</a></li>
                 <li><a href="{$smarty.const.BASEDIR}client" changeurl>Minha Conta</a></li>
                 <li><a href="{$smarty.const.BASEDIR}client/register" changeurl>Criar Conta</a></li>
 
