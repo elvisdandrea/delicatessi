@@ -50,7 +50,7 @@
 	position: absolute;
 	right: 25%;
 	top: 15%;
-    width: 50%;
+    width: 63%;
 }
 .btn{
 	background: #242424;
@@ -276,4 +276,29 @@
 		margin-left: 0;
 		text-align: center;
 	}
+}
+
+@media only screen and (max-width: 1024px) {
+    .ei-title {
+        right: auto;
+        left: 15%;
+        width: 79%;
+    }
+}
+
+@media only screen and (max-width: 735px) {
+    .ei-title h3 {
+        font-size: 0.9em;
+    }
+}
+
+@media only screen and (max-width: 610px) {
+    .ei-slider {
+        height: 625px;
+    }
+
+    .slider-image {
+        float: none;
+        margin-bottom: 20px;
+    }
 }
