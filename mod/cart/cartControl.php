@@ -24,10 +24,16 @@ class cartControl extends Control {
         $this->commitReplace($this->view()->render(), '#content');
     }
 
-    public function updateCounter() {
-        $orbit = new Orbit();
-        $cartRequest = $orbit->get('client/countcart', 1, 1, array('id' => UID::get('id')));
-        $cartItems   = $cartRequest['cart'];
+    public function updateCounter($return = false) {
+        if (!UID::isLoggedIn()) {
+            $cartItems = count(Session::get('cart'));
+        } else {
+            $orbit = new Orbit();
+            $cartRequest = $orbit->get('client/countcart', 1, 1, array('id' => UID::get('id')));
+            $cartItems   = $cartRequest['cart'];
+        }
+
+        if ($return) return $cartItems;
 
         $this->commitReplace($cartItems, '#cartitems');
 

@@ -33,6 +33,32 @@ class Session {
         }
     }
 
+    /**
+     *
+     */
+    public static function append() {
+        $aux = func_get_args();
+        $session = "";
+        $value = "";
+        if (count($aux) >= 2) {
+            $value = $aux[(count($aux) - 1)];
+            unset($aux[(count($aux) - 1)]);
+            foreach ($aux as $v) {
+                if ((is_string($v) || is_numeric($v)) && (!empty($v) && $v != "[]" )) {
+                    $session .= "['" . $v . "']";
+                }else if($v == "[]"){
+                    $session .= "[]";
+                }
+            }
+            if (is_object($value)) {
+                $value = serialize($value);
+            }
+            if (!empty($session)) {
+                eval('$_SESSION' . $session . '[] = $value;');
+            }
+        }
+    }
+
 
     /**
      * Reads a Session Value

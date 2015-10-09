@@ -207,13 +207,16 @@ class productsControl extends Control {
 
     public function addToCart() {
 
+        $orbit   = new Orbit();
+
         if (!UID::isLoggedIn()) {
-            $client = Services::get('client');
-            $client->register();
+
+            Session::append('cart', $this->getQueryString('product_id'));
+            $cartPage = Services::get('cart');
+            $cartPage->updateCounter();
             return;
         }
 
-        $orbit   = new Orbit();
         $request = $orbit->get('request/cart', 1, 1, array('client_id' => UID::get('id')));
 
         if (!isset($request['cart']) || $request['cart'] == 0 ) {
@@ -235,7 +238,6 @@ class productsControl extends Control {
 
         $cartPage = Services::get('cart');
         $cartPage->updateCounter();
-        $cartPage->cartPage();
 
     }
 

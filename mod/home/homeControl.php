@@ -91,9 +91,10 @@ class homeControl extends Control {
             $orbit = new Orbit();
             $favRequest  = $orbit->get('client/countfav', 1, 1, array('id' => UID::get('id')));
             $favs        = $favRequest['fav'];
-            $cartRequest = $orbit->get('client/countcart', 1, 1, array('id' => UID::get('id')));
-            $carts       = $cartRequest['cart'];
         }
+
+        $cart = Services::get('cart');
+        $carts       = $cart->updateCounter(true);
 
         $this->newView('header');
         $this->view('header')->loadTemplate('header');

@@ -11,9 +11,9 @@
                                 <div class="slider-image">
                                     <img src="{$row['image']}" alt="{$row['product_name']}"/>
                                 </div>
-                                <h3 class="btn">{String::convertTextFormat($row['price'], 'currency')}</h3>
                                 <h2>{$row['product_name']}</h2>
                                 <h3 class="active">{$row['description']}
+                                <h3 class="golden">{String::convertTextFormat($row['price'], 'currency')}</h3>
                                 </h3>
                                 <h3>
                                     <a class="ei_icons" href="{$smarty.const.BASEDIR}products/{$row['id']}" changeurl><img src="{$smarty.const.T_IMGURL}/icon_1.png" alt=""></a>

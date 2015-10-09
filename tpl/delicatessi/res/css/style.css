@@ -30,7 +30,7 @@ img{max-width:100%;}
 /*end reset*/
 
 .margin-menu-top{
-	margin-top: 30px;
+	/*margin-top: 30px;*/
 }
 
 body {
@@ -40,7 +40,7 @@ body {
 }
 .wrap{
 	margin:0 auto;
-	width:80%;
+	width:100%;
 }
 /* start header */
 .top_bg{
@@ -51,17 +51,19 @@ body {
 }
 .logo{
 	float:left;
-	margin: 14px 0;
+    margin-left: 40%;
+    padding: .7em;
 }
 
 .logo img {
-    height: 80px;
+    height: 230px;
 }
 /********** Login & registration *************/
 .log_reg{
-	border-right: 1px solid rgb(60, 60, 60);
-	padding: 12px 16px;
-	float:right;
+    border-right: 1px solid #3C3C3C;
+    float: right;
+    width: 25%;
+    padding: 12px 0px;
 }
 .log_reg ul li{
 	display: inline-block;
@@ -71,7 +73,7 @@ body {
 	font-size: 0.8125em;
 	display: block;
 	padding: 5px 8px;
-	color: #E9C486;
+	color: #6F4806;
 	text-transform: uppercase;
 	-webkit-text-stroke: 0.5px;
 }
@@ -250,7 +252,7 @@ h4.style{
 .web_search{
 	position: relative;
 	float:right;
-	width: 28.33333%;
+	width: 21.333%
 	border-right: 1px solid rgb(60, 60, 60);
 	padding: 6px 10px;
 }
@@ -305,7 +307,7 @@ h4.style{
 }
 /* start header_btm */
 .header_btm{
-	padding: 0 4%;
+	/*padding: 0 4%;*/
 }
 .menu{
 	float: left;
@@ -392,7 +394,7 @@ h4.style{
 	background: url(../img/art.png) no-repeat 4px 8px;
 }
 .header_right ul li a > i.cart{
-	background: url(../img/cart.png) no-repeat 5px 8px;
+	background: url(../img/cart.png) no-repeat 3px 0px;
 }
 /* smart_nav */
 .navicon{
@@ -400,7 +402,7 @@ h4.style{
 	width: 28px;
 	height: 28px;
 	position: absolute;
-	top: 135px;
+	top: 65px;
 	left: 6.33333%;
 	background: url(../img/nav-icon.png) no-repeat;
 }
@@ -1907,7 +1909,7 @@ span.color7{
 /***** Media Quries *****/
 @media only screen and (max-width: 1366px) {
 	.wrap{
-		width:95%;
+		width:100%;
 	}
 	.web_search {
 		width: 26.33333%;
@@ -1921,7 +1923,7 @@ span.color7{
 }
 @media only screen and (max-width: 1280px) {
 	.wrap{
-		width:95%;
+		width:100%;
 	}
 	.web_search {
 		width: 30.33333%;
@@ -1958,7 +1960,7 @@ span.color7{
 }
 @media only screen and (max-width: 1024px) {
 	.wrap{
-		width:95%;
+		width:100%;
 	}
 	.web_search {
 		width: 34.33333%;
@@ -2003,7 +2005,7 @@ span.color7{
 }
 @media only screen and (max-width: 800px) {
 	.wrap{
-		width:95%;
+		width:100%;
 	}
 	.web_search input[type="text"] {
 		width: 68.33333%;
@@ -2117,10 +2119,23 @@ span.color7{
 	.left_products {
 		margin: 4% 0;
 	}
+
+    .logo {
+        margin-left: 30%;
+    }
+
+    .menu-back {
+        width: 100%;
+        padding: 0px 0px;
+    }
+
+    #header-links {
+        display: none;
+    }
 }
 @media only screen and (max-width: 640px){
 	.wrap{
-		width:95%;
+		width:100%;
 	}
 	.menu {
 		display: none;
@@ -2150,10 +2165,10 @@ span.color7{
 }
 @media only screen and (max-width: 480px) {
 	.wrap{
-		width:95%;
+		width:100%;
 	}
 	.web_search {
-		display: none;
+		width: 90%;
 	}
 	.tabs label {
 		width: 23.3333%;
@@ -2212,10 +2227,14 @@ span.color7{
 		background: none;
 	}
 
+    .home-top .logo {
+        margin-left: 24%;
+    }
+
 }
 @media only screen and (max-width: 320px) {
 	.wrap{
-		width:95%;
+		width:100%;
 	}
 	.logo{
 		float: none;
@@ -2307,13 +2326,19 @@ span.color7{
         display: none;
     }
     .web_search {
-        width: 45%;
+        width: 60%;
     }
 
     .web_search input {
         width: 60.333%;
     }
 
+}
+
+@media (max-width: 340px) {
+    .web_search {
+        width: 80%;
+    }
 }
 
 .product-thumbs {
@@ -2709,7 +2734,7 @@ select.addresslist {
 
 .slider-image {
     opacity: 1 !important;
-    width: 20em;
+    width: 31em;
     display: inline-block;
     float: left;
     margin-right: 1em;
@@ -2720,4 +2745,37 @@ select.addresslist {
     height: 80%;
     border: 5px solid #6F4806;
     border-radius: 50%;
+}
+
+.log_reg li.text {
+    font-family: "Maven Pro",sans-serif;
+    font-size: 1.313em;
+    display: block;
+    padding: 5px 8px;
+    color: #6F4806;
+}
+
+.home-top {
+    width: 100%;
+    display: block;
+    float: left;
+    background-color: #FEFEF8;
+}
+
+.home-top .logo {
+
+}
+
+.menu-back {
+    float: left;
+    background-color: rgba(255, 70,141, .3);
+    width: 92%;
+    padding: 0 4%;
+}
+
+.home-top .log_reg img {
+    width: 40px;
+    display: inline-block;
+    float: left;
+    margin-right: 10px;
 }

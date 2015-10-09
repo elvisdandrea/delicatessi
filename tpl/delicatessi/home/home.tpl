@@ -11,6 +11,7 @@
         <link href="{$smarty.const.T_CSSURL}/slider.css" rel="stylesheet" type="text/css" media="all" />
         <script type="text/javascript" src="{$smarty.const.T_JSURL}/jquery.min.js"></script>
         <script type="text/javascript" src="http://maps.google.com/maps/api/js?sensor=false"></script>
+        <link href="http://fonts.googleapis.com/css?family=Great+Vibes" rel="stylesheet" type="text/css">
         <script src="{$smarty.const.JSURL}/gmaps.js"></script>
     </head>
     <body>

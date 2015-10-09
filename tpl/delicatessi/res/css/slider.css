@@ -47,10 +47,10 @@
 	margin-left:0px !important;
 }
 .ei-title{
-	position: absolute;
-	right: 25%;
-	top: 15%;
-    width: 63%;
+    position: absolute;
+    right: 19%;
+    top: 6%;
+    width: 70%;
 }
 .btn{
 	background: #242424;
@@ -65,17 +65,17 @@
 	line-height: 1.8em;
 }
 .ei-title h2{
-	font-family: 'Maven Pro', sans-serif;
+    font-family: 'Great Vibes', Helvetica, sans-serif;
 	padding:10px 0 0;
-	font-size: 2.5em;
+	font-size: 6.5em;
 	line-height: 1.2em;
 	color: #242424;
 	text-transform:capitalize;
 }
 .ei-title h3{
-	font-family: 'Maven Pro', sans-serif;
+    font-family: 'Great Vibes', Helvetica, sans-serif;
 	padding-top:15px;
-	font-size: 1.2em;
+    font-size: 2.0em;
 	line-height:1.5em;
 	color: #ffffff;
 }
@@ -173,12 +173,12 @@
 /***** Media Quries *****/
 @media only screen and (max-width: 1366px) {
 	.wrap{
-		width:95%;
+		width:100%;
 	}
 }
 @media only screen and (max-width: 1280px) {
 	.wrap{
-		width:95%;
+		width:100%;
 	}
 	.ei-title h2 {
 		font-size: 2em;
@@ -186,7 +186,7 @@
 }
 @media only screen and (max-width: 1024px) {
 	.wrap{
-		width:95%;
+		width:100%;
 	}
 	.ei-slider-thumbs {
 		width: 86% !important;
@@ -203,7 +203,7 @@
 }
 @media only screen and (max-width: 800px) {
 	.wrap{
-		width:95%;
+		width:100%;
 	}
 	.hide1{
 		display: none;
@@ -231,12 +231,12 @@
 }
 @media only screen and (max-width: 640px) {
 	.wrap{
-		width:95%;
+		width:100%;
 	}
 }
 @media only screen and (max-width: 480px) {
 	.wrap{
-		width:95%;
+		width:100%;
 	}
 	.ei-title {
 		right: 5%;
@@ -251,7 +251,7 @@
 }
 @media only screen and (max-width: 320px) {
 	.wrap{
-		width:95%;
+		width:100%;
 	}
 	.ei-title {
 		right: 0%;
@@ -288,7 +288,7 @@
 
 @media only screen and (max-width: 735px) {
     .ei-title h3 {
-        font-size: 0.9em;
+        font-size: 1.1em;
     }
 }
 
@@ -301,4 +301,19 @@
         float: none;
         margin-bottom: 20px;
     }
+}
+
+@media (max-width: 900px) {
+    .slider-image {
+        opacity: 1 !important;
+        width: 28em;
+    }
+
+    .ei-title h3 {
+        font-size: 1.6em;
+    }
+}
+
+.golden {
+    color: #6F4806 !important;
 }
