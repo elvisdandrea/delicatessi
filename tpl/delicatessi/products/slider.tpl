@@ -35,7 +35,7 @@
                                 </a>
                             </li>
                         {else}
-                            <li><a href="#"><span></span></a><img src="{$row['image']}" alt="{$row['product_name']}" /></li>
+                            <li><a href="#"><span></span></a></li>
                         {/if}
                     {/foreach}
                 </ul><!-- ei-slider-thumbs -->
