@@ -33,7 +33,6 @@
                                 <a href="#">
                                     <span class="active"></span>
                                 </a>
-                                <img src="{$row['image']}" alt="{$row['product_name']}" />
                             </li>
                         {else}
                             <li><a href="#"><span></span></a><img src="{$row['image']}" alt="{$row['product_name']}" /></li>

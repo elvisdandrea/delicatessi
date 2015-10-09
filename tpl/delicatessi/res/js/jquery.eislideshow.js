@@ -111,7 +111,7 @@
 			this.$loading		= $('<div class="ei-slider-loading">Loading</div>').prependTo( _self.$el );
 			
 			$.when( this._preloadImages() ).done( function() {
-				
+
 				// hide loading status
 				_self.$loading.hide();
 				
