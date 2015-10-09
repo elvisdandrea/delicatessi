@@ -2779,3 +2779,25 @@ select.addresslist {
     float: left;
     margin-right: 10px;
 }
+
+.account {
+    display: inline-block;
+    float: left;
+}
+.account-items {
+    display: inline-block;
+    float: left;
+    height: 2.1em;
+    border: 1px solid #CCC;
+    border-radius: 15px 15px;
+    padding: 1px 7px;
+}
+
+.account-items img {
+    width: 23px !important;
+    display: inline-block;
+}
+
+.account-items a {
+    font-size: 1.2em !important;
+}

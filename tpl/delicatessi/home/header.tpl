@@ -25,13 +25,25 @@
                     <li><a href="{$smarty.const.BASEDIR}contact" changeurl>Fale Conosco</a> </li>
                 </ul>
                 <img src="{$smarty.const.T_IMGURL}/no_avatar.jpg">
-                <ul>
+                <ul class="account">
                     <li class="text">
                         {if (UID::isLoggedIn())}
                             Olá {UID::get('client_name')}
                         {else}
                             Olá Visitante
                         {/if}
+                    </li>
+                </ul>
+                <ul class="account-items">
+                    <li>
+                        <a href="{$smarty.const.BASEDIR}client/favs" changeurl>
+                            <img src="{$smarty.const.T_IMGURL}/art.png">
+                            <i  class="art"></i><span id="favitems" class="color1">{intval($favs)}</span></a>
+                    </li>
+                    <li>
+                        <a href="{$smarty.const.BASEDIR}cart" changeurl>
+                            <img src="{$smarty.const.T_IMGURL}/cart.png">
+                            <i  class="cart"></i><span id="cartitems">{intval($carts)}</span></a>
                     </li>
                 </ul>
             </div>
@@ -53,12 +65,6 @@
             </div>
             <div id="smart_nav">
                 <a class="navicon" href="#menu-left"> </a>
-            </div>
-            <div class="header_right">
-                <ul>
-                    <li><a href="{$smarty.const.BASEDIR}client/favs" changeurl><i  class="art"></i><span id="favitems" class="color1">{intval($favs)}</span></a></li>
-                    <li><a href="{$smarty.const.BASEDIR}cart" changeurl><i  class="cart"></i><span id="cartitems">{intval($carts)}</span></a></li>
-                </ul>
             </div>
         </div>
         <nav id="menu-left">
