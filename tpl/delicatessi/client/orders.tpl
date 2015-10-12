@@ -22,6 +22,7 @@
                             <p><label>Valor:</label><label class="value">{String::convertTextFormat($order['order']['price'], 'currency')}</label></p>
                             {if ($order['order']['status_id'] == '1')}
                                 <a href="{$smarty.const.BASEDIR}cart/purchasepage?order_id={$order['order']['id']}" class="btn">Finalizar compra</a>
+                                <div class="clear"></div>
                                 <label>Se você já efetuou o pagamento deste pedido, <a href="{$smarty.const.BASEDIR}contact">Contate-nos</a> e informe o número do pedido.</label>
                             {/if}
                             <p><label>Status do Pedido:</label><label class="value">{$order['order']['status']}</label></p>

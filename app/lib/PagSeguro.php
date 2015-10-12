@@ -3,10 +3,10 @@
 
 class PagSeguro {
 
-//    const PAGSEGURO_URL = 'https://ws.pagseguro.uol.com.br/v2/checkout';
-    const  PAGSEGURO_URL = 'https://ws.sandbox.pagseguro.uol.com.br/v2/checkout';   // Sandbox
-//    const  PAYMENT_URL = 'https://pagseguro.uol.com.br/v2/checkout/payment.html';
-    const  PAYMENT_URL   = 'https://sandbox.pagseguro.uol.com.br/v2/checkout/payment.html'; //Sandbox
+    const PAGSEGURO_URL = 'https://ws.pagseguro.uol.com.br/v2/checkout';
+//    const  PAGSEGURO_URL = 'https://ws.sandbox.pagseguro.uol.com.br/v2/checkout';   // Sandbox
+    const  PAYMENT_URL = 'https://pagseguro.uol.com.br/v2/checkout/payment.html';
+//    const  PAYMENT_URL   = 'https://sandbox.pagseguro.uol.com.br/v2/checkout/payment.html'; //Sandbox
 
     private $xml;
 
@@ -185,8 +185,6 @@ class PagSeguro {
     }
 
     public function submit() {
-
-        $this->token = '807795BB8CBE4C2F98B4ED804C352EA0';
 
         $request = new HttpHandler(self::PAGSEGURO_URL . '?email=' . $this->email . '&token=' . $this->token);
         $request->setMethod('post');

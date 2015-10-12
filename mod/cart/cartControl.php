@@ -70,8 +70,21 @@ class cartControl extends Control {
         $cartItems = $this->getCartItems();
         $addresses = $this->getAddresses();
 
+        $orbit    = new Orbit();
+        $result   = $orbit->get('client/orders/' . UID::get('id'));
+        $orders   = $result['orders'];
+
+        $hasUnfinished = false;
+        foreach ($orders as $order) {
+            if ($order['order']['status_id'] == '1') {
+                $hasUnfinished = true;
+                break;
+            }
+        }
+
         $this->view()->setVariable('cartItems', $cartItems);
         $this->view()->setVariable('addresses', $addresses['address']);
+        $this->view()->setVariable('hasUnfinished', $hasUnfinished);
         $this->view()->loadTemplate('cart');
         echo Html::RemoveClass('dialogIsOpen','body');
         echo Html::RemoveHtml('.modal');
@@ -340,7 +353,7 @@ class cartControl extends Control {
         $address    = $clientAddr['address'];
 
         $getCart = array('client_id' => UID::get('id'));
-        
+
         if (isset($cart['id'])) {
             $getCart['id'] = $cart['id'];
         }

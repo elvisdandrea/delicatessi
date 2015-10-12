@@ -2593,7 +2593,7 @@ span.color7{
     width: 96%;
     background: #FFF none repeat scroll 0% 0%;
     padding: 2%;
-    margin-bottom: 50px;
+    /*margin-bottom: 50px;*/
 }
 
 .purchase {
@@ -2815,7 +2815,7 @@ select.addresslist {
 
     position: fixed;
     width: 50%;
-    top: 50%;
+    top: 900px;
     left: 50%;
     margin: -25% 0 0 -25%;
     padding: 2em;
@@ -2903,4 +2903,13 @@ body {
 
 .form-grid2 input[type="submit"]{
     margin-left: .9em;
+}
+
+.cart-content > h2 {
+    font-size: 1.0em;
+    color: #6F4806;
+    /*text-transform: uppercase;*/
+    text-shadow: 0px 1px 0px #FFF;
+    /*border-bottom: 1px solid #E9E9E9;*/
+    padding-bottom: 10px;
 }

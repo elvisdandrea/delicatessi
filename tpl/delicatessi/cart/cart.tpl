@@ -7,6 +7,11 @@
 </div>
 <div class="main_bg">
     <div class="wrap">
+        {if ($hasUnfinished)}
+        <div class="cart-content">
+            <h2>Olá! Vimos que você possui outros pedidos em aberto. Clique em <a href="{$smarty.const.BASEDIR}client/orders">Visualizar meus pedidos.</a></h2>
+        </div>
+        {/if}
         {if (count($cartItems) == 0)}
             <div id="main" class="main">
                 Você não possui itens no carrinho!
