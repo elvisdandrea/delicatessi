@@ -209,35 +209,45 @@ class productsControl extends Control {
 
         $orbit   = new Orbit();
 
-        if (!UID::isLoggedIn()) {
+//        if (!UID::isLoggedIn()) {
+
+        $cart = Session::get('cart');
+        if (!in_array($this->getQueryString('product_id'), $cart)) {
 
             Session::append('cart', $this->getQueryString('product_id'));
             $cartPage = Services::get('cart');
             $cartPage->updateCounter();
-            return;
         }
 
-        $request = $orbit->get('request/cart', 1, 1, array('client_id' => UID::get('id')));
+        $this->view()->loadTemplate('addedcart');
+        $this->commitAdd($this->view()->render(), 'body');
+        echo Html::AddClass('dialogIsOpen','body');
 
-        if (!isset($request['cart']) || $request['cart'] == 0 ) {
-            $request = $orbit->post('request/addcart', array(
-                'client_id' => UID::get('id')
-            ));
+        return;
 
-            if ($request['status'] != 200) {
-                //TODO: validar erro de criação de carrinho
-            }
-        }
 
-        $cart = $request['cart'];
-
-        $item = $orbit->post('request/additem', array(
-            'request_id'    => $cart['id'],
-            'product_id'    => $this->getQueryString('product_id')
-        ));
-
-        $cartPage = Services::get('cart');
-        $cartPage->updateCounter();
+//        }
+//        $request = $orbit->get('request/cart', 1, 1, array('client_id' => UID::get('id')));
+//
+//        if (!isset($request['cart']) || $request['cart'] == 0 ) {
+//            $request = $orbit->post('request/addcart', array(
+//                'client_id' => UID::get('id')
+//            ));
+//
+//            if ($request['status'] != 200) {
+//                //TODO: validar erro de criação de carrinho
+//            }
+//        }
+//
+//        $cart = $request['cart'];
+//
+//        $item = $orbit->post('request/additem', array(
+//            'request_id'    => $cart['id'],
+//            'product_id'    => $this->getQueryString('product_id')
+//        ));
+//
+//        $cartPage = Services::get('cart');
+//        $cartPage->updateCounter();
 
     }
 

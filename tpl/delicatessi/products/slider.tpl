@@ -19,7 +19,7 @@
                                     <a class="ei_icons" href="{$smarty.const.BASEDIR}products/{$row['id']}" changeurl><img src="{$smarty.const.T_IMGURL}/icon_1.png" alt=""></a>
                                     <a class="ei_icons" href="{$smarty.const.BASEDIR}products/addfavourite?id={$row['id']}"><img src="{$smarty.const.T_IMGURL}/icon_2.png" alt=""></a>
                                     <!--<a class="ei_icons" href="#"><img src="{$smarty.const.T_IMGURL}/icon_3.png" alt=""></a>-->
-                                    <a class="ei_icons" href="{$smarty.const.BASEDIR}products/addtocart?product_id={$row['id']}" changeurl><img src="{$smarty.const.T_IMGURL}/icon_4.png" alt=""></a>
+                                    <a class="ei_icons" href="{$smarty.const.BASEDIR}products/addtocart?product_id={$row['id']}" ><img src="{$smarty.const.T_IMGURL}/icon_4.png" alt=""></a>
                                 </h3>
                             </div>
                         </li>

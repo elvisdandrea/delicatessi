@@ -15,11 +15,13 @@
         <script src="{$smarty.const.JSURL}/gmaps.js"></script>
     </head>
     <body>
-        {$page_header}
-        <div id="content">
-            {$page_content}
+        <div id="page">
+            {$page_header}
+            <div id="content">
+                {$page_content}
+            </div>
+            {include "tpl/delicatessi/home/footer.tpl"}
         </div>
-        {include "tpl/delicatessi/home/footer.tpl"}
     </body>
     <script type="text/javascript" src="{$smarty.const.T_JSURL}/jquery.eislideshow.js"></script>
     <script type="text/javascript" src="{$smarty.const.T_JSURL}/easing.js"></script>

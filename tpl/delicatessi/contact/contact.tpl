@@ -15,7 +15,7 @@
                         {*<p>Canoas, RS</p>*}
                         {*<p>Brasil</p>*}
                         <p>Fone:(51) 3115-0338</p>
-                        <p>Celular: (51) 9598-8243</p>
+                        <p>Whatsapp: (51) 9598-8243</p>
                         <p>Email: <a href="mailto:atendimento@delicatessi.com.br">atendimento@delicatessi.com.br</a></p>
                         <p>Nos siga: <a href="http://facebook.com/delicatessi">Facebook.com/delicatessi</a></p>
                     </div>
@@ -38,6 +38,10 @@
                             </div>
                             <div>
                                 <span><label>Assunto</label></span>
+                                <span><input name="userSubject" type="text" class="textbox"></span>
+                            </div>
+                            <div>
+                                <span><label>Mensagem</label></span>
                                 <span><textarea name="userMsg"> </textarea></span>
                             </div>
                             <div>

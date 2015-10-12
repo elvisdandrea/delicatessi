@@ -17,9 +17,13 @@
                 {assign var="orderPrice" value="0"}
                 {foreach from=$orders item="order"}
                     <div class="order">
-                        <h3>Pedido #{$order['order']['id']} - {String::formatDateTimeToLoad($order['order']['date'])}</h3>
+                        <h3>Pedido #{$order['order']['id']} - {if ($order['order']['date'] == '')}Ainda não Finalizado{else}{String::formatDateTimeToLoad($order['order']['date'])}{/if}</h3>
                         <div class="order-info">
                             <p><label>Valor:</label><label class="value">{String::convertTextFormat($order['order']['price'], 'currency')}</label></p>
+                            {if ($order['order']['status_id'] == '1')}
+                                <a href="{$smarty.const.BASEDIR}cart/purchasepage?order_id={$order['order']['id']}" class="btn">Finalizar compra</a>
+                                <label>Se você já efetuou o pagamento deste pedido, <a href="{$smarty.const.BASEDIR}contact">Contate-nos</a> e informe o número do pedido.</label>
+                            {/if}
                             <p><label>Status do Pedido:</label><label class="value">{$order['order']['status']}</label></p>
                             <p><label>Entrega por:</label><label class="value">{$order['shipping']['type']}</label></p>
                             <p><label>Previsão de entrega:</label><label class="value">{$order['shipping']['days']}</label></p>

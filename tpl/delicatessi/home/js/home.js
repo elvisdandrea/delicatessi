@@ -18,3 +18,8 @@ $(document).ready(function() {
             scrollTop: $(this.hash).offset().top}, 1200);
     });
 });
+
+$(document).on('click','.modal-close', function(){
+    $('body').removeClass('dialogIsOpen');
+    $('.modal').remove();
+});
