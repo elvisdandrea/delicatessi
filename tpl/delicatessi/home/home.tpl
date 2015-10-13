@@ -4,6 +4,8 @@
         <title>Delicatessi - Semi-jóias e acessórios femininos</title>
         <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+        <meta name="keywords" content="Delicatessi, semi-jóias, anéis, brincos, pulsieras, colares, ouro, zircônio, zircônia">
+        <meta name="description" content="Delicatessi Semi-jóias, anéis, brincos, pulseiras, colares, tudo banhado a ouro e com 1 ano de garantia">
         {$metas}
         <link href='http://fonts.googleapis.com/css?family=Maven+Pro:400,900,700,500' rel='stylesheet' type='text/css'>
         <link href="{$smarty.const.T_CSSURL}/style.css" rel="stylesheet" type="text/css" media="all" />
